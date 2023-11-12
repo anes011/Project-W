@@ -1,0 +1,33 @@
+.book {
+    height: 100px;
+    width: 100%;
+    border-radius: 30px;
+    margin-top: 2rem;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.arrow-btn-container {
+    display: flex;
+    align-items: center;
+    gap: 7rem;
+}
+
+.arrow-btn-container button {
+    padding: 7px 15px;
+    background-color: #fff;
+    font-size: 1rem;
+    font-weight: 800;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.arrow-btn-container svg {
+    transform: scale(1.4);
+}

@@ -1,6 +1,6 @@
 .hero {
-    height: 70%;
-    width: 95%;
+    height: 520px;
+    width: 100%;
     border-radius: 40px;
     background-image: url('../images&logos/villa-sea-view-21.jpg');
     background-position: center;
@@ -39,23 +39,32 @@
     width: 25%;
     padding: 5px;
     border-radius: 30px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, .6);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    backdrop-filter: blur(4px);
 }
 
 .image-container {
     height: 70%;
     width: 100%;
     border-radius: 30px;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: auto;
+    display: flex;
+    scroll-behavior: smooth;
 }
 
-.image-container img {
+.image-container::-webkit-scrollbar {
+    display: none;
+}
+
+.model {
     height: 100%;
     width: 100%;
+    min-width: 100%;
     object-fit: cover;
 }
 

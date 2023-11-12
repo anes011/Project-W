@@ -1,0 +1,81 @@
+.nav {
+    height: 12%;
+    border-radius: 40px;
+    position: fixed;
+    left: 30px;
+    right: 30px;
+    top: 20px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 2rem;
+    z-index: 2;
+}
+
+.menu {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.menu:hover {
+    border: 2px solid rgb(197, 41, 155);
+    color: rgb(197, 41, 155);
+}
+
+.menu svg {
+    transform: scale(1.3);
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 2rem;
+    color: rgb(197, 41, 155);
+}
+
+.profile-book-container {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile-container p:nth-of-type(2) {
+    color: rgb(197, 41, 155);
+    font-weight: 800;
+}
+
+.profile-container img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.book-btn {
+    padding: 7px 15px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    background-color: rgb(197, 41, 155);
+    color: #fff;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.book-btn:hover {
+    background-color: #fff;
+    border: 1px solid rgb(197, 41, 155);
+    color: rgb(197, 41, 155);
+}
