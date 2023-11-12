@@ -49,7 +49,6 @@
 
 .signup-signin-container {
     display: flex;
-    gap: 2rem;
     font-size: 14px;
     margin-top: 4rem;
     margin-bottom: 4rem;
@@ -59,12 +58,12 @@
 
 .signup-signin-container h1 {
     cursor: pointer;
+    padding: 3px 10px;
     transition: all .3s ease;
 }
 
 .signup-signin-container h1:hover {
     background-color: rgb(197, 41, 155);
-    border-radius: 10px;
     color: #fff;
 }
 
