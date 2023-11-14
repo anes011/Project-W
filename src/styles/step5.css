@@ -1,0 +1,57 @@
+.step-5 {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.guests-container {
+    margin-top: 3rem;
+}
+
+.guests-container, 
+.bedrooms-container, 
+.beds-container, 
+.bathrooms-container {
+    display: flex;
+    border-bottom: 1px solid #b5b5b5;
+    padding: 1rem 0;
+    width: 40%;
+    justify-content: space-between;
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.minus-plus-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.minus-plus-container button {
+    height: 39px;
+    width: 39px;
+    border-radius: 50%;
+    border: 2px solid rgb(197, 41, 155);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.minus-plus-container button:hover {
+    background-color: rgb(197, 41, 155);
+    border: none;
+    color: #fff;
+}
+
+.minus-plus-container button:active {
+    background-color: rgb(255, 54, 201);
+    border: none;
+    color: #fff;
+}
+
+.minus-plus-container svg {
+    transform: scale(1.5);
+}

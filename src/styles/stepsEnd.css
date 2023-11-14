@@ -1,0 +1,27 @@
+.steps-end {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.watch-gif {
+    height: 60%;
+}
+
+.success-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    height: 40%;
+}
+
+.success-container p:nth-of-type(1) {
+    font-weight: 800;
+}
+
+.success-container img {
+    height: 20%;
+}

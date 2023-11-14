@@ -1,0 +1,38 @@
+.step-10 {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.step-10 p {
+    color: gray;
+}
+
+.price-container {
+    height: 15%;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 3rem;
+}
+
+.price-container input {
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+    border: 2px solid;
+    text-indent: 5rem;
+    font-size: 1.3rem;
+    padding-inline: 5rem;
+}
+
+.price-container svg {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) scale(3);
+    left: 40px;
+}
