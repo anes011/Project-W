@@ -182,3 +182,242 @@
     top: 50%;
     transform: translateY(-50%) scale(1.5);
 }
+
+.step-5-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.guests-container {
+    margin-top: 3rem;
+}
+
+.guests-container, 
+.bedrooms-container, 
+.beds-container, 
+.bathrooms-container {
+    display: flex;
+    border-bottom: 1px solid #b5b5b5;
+    padding: 1rem 0;
+    width: 40%;
+    justify-content: space-between;
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.minus-plus-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.minus-plus-container button {
+    height: 39px;
+    width: 39px;
+    border-radius: 50%;
+    border: 2px solid rgb(197, 41, 155);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.minus-plus-container button:hover {
+    background-color: rgb(197, 41, 155);
+    border: none;
+    color: #fff;
+}
+
+.minus-plus-container button:active {
+    background-color: rgb(255, 54, 201);
+    border: none;
+    color: #fff;
+}
+
+.minus-plus-container svg {
+    transform: scale(1.5);
+}
+
+.step-6-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.amenities-container {
+    height: 60%;
+    width: 40%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.amen-btn {
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid rgb(174, 174, 174);
+    transition: all .3s ease;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.amen-btn-active {
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 3px solid rgb(197, 41, 155);
+    transition: all .3s ease;
+}
+
+.amenities-container button:hover {
+    border: 3px solid #000;
+}
+
+.amen-btn svg, .amen-btn-active svg {
+    transform: scale(1.5);
+}
+
+.step-7-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.step-7-container h1 {
+    margin-bottom: 3rem;
+}
+
+.upload-photo-container {
+    border: 3px solid rgb(197, 41, 155);
+    width: 32%;
+    height: 50%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: rgb(197, 41, 155);
+    cursor: pointer;
+}
+
+.upload-photo-container svg {
+    transform: scale(5);
+}
+
+.input-file {
+    display: none;
+}
+
+.step-8-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.step-8-container p {
+    color: gray;
+}
+
+.text-area {
+    border-radius: 10px;
+    margin-top: 3rem;
+    text-indent: 1rem;
+    font-size: 1.5rem;
+    padding-top: 1rem;
+}
+
+.step-9-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.step-9-container p {
+    color: gray;
+}
+
+.step-10-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.step-10-container p {
+    color: gray;
+}
+
+.price-container {
+    height: 15%;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 3rem;
+}
+
+.price-container input {
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+    border: 2px solid;
+    text-indent: 5rem;
+    font-size: 1.3rem;
+    padding-inline: 5rem;
+}
+
+.price-container svg {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) scale(3);
+    left: 40px;
+}
+
+.steps-end-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.watch-gif {
+    height: 60%;
+}
+
+.success-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    height: 40%;
+}
+
+.success-container p:nth-of-type(1) {
+    font-weight: 800;
+}
+
+.success-container img {
+    height: 20%;
+}
