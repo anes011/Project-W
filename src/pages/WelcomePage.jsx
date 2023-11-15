@@ -1,6 +1,7 @@
 import Nav from "../components/Nav";
 import Hero from "../components/Hero";
 import Book from "../components/Book";
+import Offers from "../components/Offers";
 import '../styles/welcomePage.css';
 
 function WelcomePage() {
@@ -9,6 +10,7 @@ function WelcomePage() {
             <Nav />
             <Hero />
             <Book />
+            <Offers />
         </div>
     )
 }

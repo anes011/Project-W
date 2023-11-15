@@ -1,15 +1,15 @@
 .nav {
-    height: 12%;
+    max-width: 2450px;
     border-radius: 40px;
     position: fixed;
-    left: 30px;
-    right: 30px;
+    left: 20px;
+    right: 20px;
     top: 20px;
     background-color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-inline: 2rem;
+    padding: 3px 2rem;
     z-index: 2;
 }
 
@@ -101,4 +101,29 @@
     background-color: #fff;
     border: 1px solid rgb(197, 41, 155);
     color: rgb(197, 41, 155);
+}
+
+@media (min-width: 2500px) {
+    .nav {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 884px) {
+    .add-offer {
+        display: none;
+    }
+}
+
+@media (max-width: 662px) {
+    .book-btn {
+        display: none;
+    }
+}
+
+@media (max-width: 436px) {
+    .profile-container {
+        display: none;
+    }
 }

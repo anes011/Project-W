@@ -1,11 +1,14 @@
 .hero {
     height: 520px;
     width: 100%;
+    max-width: 2450px;
     border-radius: 40px;
     background-image: url('../images&logos/villa-sea-view-21.jpg');
     background-position: center;
     background-size: 100%;
+    background-repeat: no-repeat;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     padding-inline: 70px;
@@ -15,6 +18,7 @@
     color: #fff;
     font-size: 5rem;
     width: 35%;
+    min-width: 400px;
     line-height: 120px;
 }
 
@@ -37,6 +41,8 @@
 .slide-container {
     height: 50%;
     width: 25%;
+    min-width: 250px;
+    max-width: 400px;
     padding: 5px;
     border-radius: 30px;
     background-color: rgba(255, 255, 255, .6);
@@ -89,4 +95,21 @@
     gap: 80px;
     background-color: rgb(197, 41, 155);
     color: #fff;
+}
+
+@media (max-width: 829px) {
+    .hero {
+        justify-content: center;
+    }
+
+    .hero-text {
+        display: none;
+    }
+}
+
+
+@media (max-width: 963px) {
+    .hero {
+        background-size: 100% 100%;
+    }
 }
