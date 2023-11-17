@@ -1,0 +1,46 @@
+.reservations-submitted {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgb(197, 41, 155);
+    color: #fff;
+}
+
+.reservations-submitted div {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.reservations-submitted div svg {
+    transform: scale(2);
+}
+
+.person img {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.decision-btns button {
+    padding: 3px 55px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+.accept {
+    background-color: green;
+}
+
+.reject {
+    background-color: red;
+}

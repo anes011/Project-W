@@ -1,7 +1,7 @@
 import '../styles/reservationSlider.css';
 import HouseImage from '../images&logos/The-Balmoral-Executive-View-Room-e1682260891619.jpg';
 import VillaImage from '../images&logos/villa-sea-view-21.jpg';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 
 function ReservationSlider() {
 
@@ -14,6 +14,23 @@ function ReservationSlider() {
     const handleNext = () => {
         sliderContainer.current.scrollLeft += sliderContainer.current.clientWidth;
     };
+
+    useEffect(() => {
+        const interval1 = setInterval(() => {
+            if (sliderContainer.current) {
+                sliderContainer.current.scrollLeft += sliderContainer.current.clientWidth;
+            }
+        }, 1000);
+
+        const interval2 = setInterval(() => {
+            sliderContainer.current.scrollLeft = 0;
+        }, 5000);
+
+        sliderContainer.current.addEventListener('mouseover', () => {
+            clearInterval(interval1);
+            clearInterval(interval2);
+        });
+    }, []);
 
     return(
         <div className="reservation-slider">

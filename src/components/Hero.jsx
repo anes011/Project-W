@@ -6,11 +6,20 @@ function Hero() {
     const imageContainer = useRef(null);
 
     useEffect(() => {
-        setInterval(() => {
+        const interval1 = setInterval(() => {
             if (imageContainer.current) {
                 imageContainer.current.scrollLeft += imageContainer.current.clientWidth;
             }
-        }, 3000);
+        }, 1000);
+
+        const interval2 = setInterval(() => {
+            imageContainer.current.scrollLeft = 0;
+        }, 5000);
+
+        imageContainer.current.addEventListener('mouseover', () => {
+            clearInterval(interval1);
+            clearInterval(interval2);
+        });
     }, []);
 
     return(

@@ -1,0 +1,150 @@
+.reservation-price {
+    padding-inline: 2rem;
+    width: 40%;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+}
+
+.price-table {
+    border-radius: 10px;
+    width: 100%;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.res-price {
+    font-size: 1rem;
+}
+
+.res-price span {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.dates-container {
+    display: flex;
+    gap: 2rem;
+}
+
+.dates-container div {
+    padding: 3px 20px;
+    border-radius: 10px;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.price-table button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 5px 100px;
+    font-size: 1rem;
+    font-weight: 800;
+    background-color: rgb(197, 41, 155);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: all .3s ease;
+}
+
+.price-table button img {
+    height: 20px;
+}
+
+.price-table button:hover {
+    border-radius: 0px;
+    background-color: rgb(255, 72, 206);
+}
+
+.payment-instructions h1 {
+    font-size: 20px;
+    color: rgb(197, 41, 155);
+}
+
+.payment-description {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.payment-description img {
+    height: 30px;
+}
+
+.payment-instructions h1:nth-of-type(2) {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.step-1-res div {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.step-1-res div svg {
+    transform: scale(4);
+}
+
+.step-2-res {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-info, .contact-info div {
+    display: flex;
+    align-items: center;
+}
+
+.contact-info {
+    gap: 2rem;
+}
+
+.contact-info div {
+    gap: 10px;
+}
+
+.and {
+    font-weight: 800;
+}
+
+.step-3-res {
+    margin-top: 1rem;
+}
+
+.step-3-res div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.step-3-res div svg {
+    transform: scale(4);
+}
+
+.step-3-res div p span {
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.step-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: rgb(197, 41, 155);
+}

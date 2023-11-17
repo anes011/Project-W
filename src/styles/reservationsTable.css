@@ -1,0 +1,73 @@
+.reservations-table {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgb(197, 41, 155);
+    color: #fff;
+}
+
+.reservations, .dates, .location, .status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    font-weight: 800;
+    height: 50px;
+}
+
+.dates {
+    padding-left: 7px;
+}
+
+.location {
+    padding-left: 3px;
+}
+
+.dates svg, .location svg {
+    transform: scale(2);
+}
+
+.reservations img, .status img {
+    height: 35px;
+}
+
+.res-title, .res-date, .res-location, .res-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    
+}
+
+.res-status-pending {
+    color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 800;
+}
+
+.res-status-rejected {
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 800;
+}
+
+.res-status-succeeded {
+    color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 800;
+}
+
+.res-status-succeeded img {
+    height: 20px;
+}
