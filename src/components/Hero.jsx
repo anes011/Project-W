@@ -13,7 +13,9 @@ function Hero() {
         }, 1000);
 
         const interval2 = setInterval(() => {
-            imageContainer.current.scrollLeft = 0;
+            if (imageContainer.current) {
+                imageContainer.current.scrollLeft = 0;
+            }
         }, 5000);
 
         imageContainer.current.addEventListener('mouseover', () => {

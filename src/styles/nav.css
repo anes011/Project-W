@@ -69,6 +69,10 @@
     transform: scale(1.5);
 }
 
+.add-offer-link {
+    text-decoration: none;
+}
+
 .profile-container {
     display: flex;
     align-items: center;
@@ -103,6 +107,103 @@
     color: rgb(197, 41, 155);
 }
 
+.menu-dropdown {
+    width: 25%;
+    max-width: 300px;
+    min-width: 300px;
+    background-color: #000;
+    position: absolute;
+    left: 20px;
+    bottom: 0;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, .5);
+    backdrop-filter: blur(8px);
+    animation: drop .3s forwards;
+}
+
+@keyframes drop {
+    100% {
+        bottom: -13rem;
+    }
+}
+
+.link {
+    text-decoration: none;
+    color: #000;
+}
+
+.language, .reservations-cart-container, 
+.received-reservations, .logout, .add-offer-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 10px 50px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.reservations-cart-container {
+    border-radius: 10px 10px 0 0;
+}
+
+.language {
+    border-radius: 0 0 10px 10px;
+}
+
+.menu-element:hover {
+    background-color: rgb(197, 41, 155);
+    color: #fff;
+}
+
+.menu-dropdown div svg {
+    transform: scale(1.3);
+}
+
+.language-dropdown {
+    position: absolute;
+    right: -10rem;
+    bottom: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, .5);
+    backdrop-filter: blur(8px);
+}
+
+.language-dropdown p {
+    display: flex;
+    align-items: center;
+    padding: 10px 50px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.language-dropdown p:hover {
+    background-color: rgb(197, 41, 155);
+    color: #fff;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    padding-left: 2.4rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    gap: 1rem;
+}
+
+.profile-section img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+
+
+
+
+
 @media (min-width: 2500px) {
     .nav {
         left: 50%;
@@ -114,6 +215,11 @@
     .add-offer {
         display: none;
     }
+    @keyframes drop {
+        100% {
+            bottom: -16rem;
+        }
+    }
 }
 
 @media (max-width: 662px) {
@@ -122,8 +228,25 @@
     }
 }
 
+@media (max-width: 532px) {
+    .language-dropdown {
+        position: absolute;
+        right: 50%;
+        bottom: -100px;
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: rgba(255, 255, 255, .5);
+        backdrop-filter: blur(8px);
+    }
+}
+
 @media (max-width: 436px) {
     .profile-container {
         display: none;
+    }
+    @keyframes drop {
+        100% {
+            bottom: -20rem;
+        }
     }
 }

@@ -5,6 +5,7 @@ import AddOfferPage from './pages/AddOfferPage';
 import ReservationPage from './pages/ReservationPage';
 import ReservationsCart from './pages/ReservationsCart';
 import ReservationsSubmittedPage from './pages/ReservationsSubmittedPage';
+import MoreUserInfoPage from './pages/MoreUserInfoPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<SignPage />} />
+          <Route path='/more-user-info' element={<MoreUserInfoPage />} />
           <Route path='/welcome' element={<WelcomePage />} />
           <Route path='/add-offer' element={<AddOfferPage />} />
           <Route path='/reservation' element={<ReservationPage />} />
