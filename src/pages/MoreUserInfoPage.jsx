@@ -1,4 +1,3 @@
-import '../styles/moreUserInfoPage.css';
 import MoreUserInfo from '../components/MoreUserInfo';
 
 function MoreUserInfoPage() {

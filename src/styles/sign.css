@@ -1,6 +1,9 @@
 .sign-container {
     height: 95%;
+    max-height: 700px;
     width: 60%;
+    max-width: 1000px;
+    min-width: 700px;
     background-color: #fff;
     border-radius: 20px;
     overflow: hidden;
@@ -150,4 +153,33 @@
 
 .sign-in-container, .sign-up-container {
     height: 100%;
+}
+
+
+
+
+
+
+
+@media (max-width: 699px) {
+    .background-image {
+        display: none;
+    }
+
+    .background-image-active {
+        display: none;
+    }
+
+    .right-side {
+        width: 100%;
+    }
+
+    .right-side-active {
+        width: 100%;
+        transform: translateX(0);
+    }
+
+    .sign-container {
+        min-width: 300px;
+    }
 }

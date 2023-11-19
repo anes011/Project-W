@@ -8,15 +8,21 @@
 }
 
 .amenities-container {
-    height: 60%;
+    height: 500px;
     width: 40%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    min-width: 155px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 2rem;
     margin-top: 3rem;
+    overflow: auto;
 }
 
 .amen-btn {
+    width: 29%;
+    min-width: 150px;
+    min-height: 100px;
     cursor: pointer;
     background-color: transparent;
     border-radius: 5px;
@@ -27,9 +33,14 @@
 }
 
 .amen-btn-active {
+    width: 29%;
+    min-width: 150px;
+    min-height: 100px;
     cursor: pointer;
     background-color: transparent;
     border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 800;
     border: 3px solid rgb(197, 41, 155);
     transition: all .3s ease;
 }
@@ -40,4 +51,14 @@
 
 .amen-btn svg, .amen-btn-active svg {
     transform: scale(1.5);
+}
+
+@media (max-width: 1326px) {
+    .amenities-container {
+        margin-top: 10px;
+    }
+
+    .step-6 h1 {
+        font-size: 16px;
+    }
 }

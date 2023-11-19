@@ -9,6 +9,7 @@
 
 .step-1 p {
     width: 30%;
+    min-width: 300px;
 }
 
 .step-1 p span {
@@ -21,4 +22,10 @@
     width: 300px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+@media (max-width: 899px) {
+    .step-1 img {
+        display: none;
+    }
 }

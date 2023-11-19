@@ -73,6 +73,11 @@
     text-decoration: none;
 }
 
+.profile-link {
+    text-decoration: none;
+    color: #000;
+}
+
 .profile-container {
     display: flex;
     align-items: center;
@@ -123,7 +128,7 @@
 
 @keyframes drop {
     100% {
-        bottom: -13rem;
+        bottom: -19rem;
     }
 }
 
@@ -133,7 +138,8 @@
 }
 
 .language, .reservations-cart-container, 
-.received-reservations, .logout, .add-offer-container {
+.received-reservations, .logout, .add-offer-container,
+.accepted-reservations, .my-offers {
     display: flex;
     align-items: center;
     gap: 2rem;
@@ -142,7 +148,7 @@
     transition: all .3s ease;
 }
 
-.reservations-cart-container {
+.accepted-reservations {
     border-radius: 10px 10px 0 0;
 }
 
@@ -217,7 +223,7 @@
     }
     @keyframes drop {
         100% {
-            bottom: -16rem;
+            bottom: -22rem;
         }
     }
 }
@@ -246,7 +252,7 @@
     }
     @keyframes drop {
         100% {
-            bottom: -20rem;
+            bottom: -25.3rem;
         }
     }
 }

@@ -15,8 +15,10 @@
     border: 3px solid rgb(197, 41, 155);
     width: 32%;
     height: 50%;
+    max-height: 400px;
     border-radius: 10px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 5rem;
@@ -32,4 +34,10 @@
 
 .input-file {
     display: none;
+}
+
+@media (max-width: 1166px) {
+    .upload-photo-container {
+        gap: 3rem;
+    }
 }

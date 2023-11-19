@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import '../styles/moreUserInfo.css';
 
 function MoreUserInfo() {
@@ -37,6 +37,8 @@ function MoreUserInfo() {
                     </svg>
                     <input type="text" placeholder='Enter your phone number...' />
                 </div>
+
+                <button>Register</button>
 
                 <p>Note: your phone number is private and not shared with anyone, untill they reserve one of your offers and you accept it.</p>
             </div>

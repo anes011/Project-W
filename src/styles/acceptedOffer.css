@@ -1,0 +1,28 @@
+.accepted-offer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: rgb(197, 41, 155);
+    color: #fff;
+}
+
+.accepted-offer div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    height: 50px;
+}
+
+.accepted-offer div svg {
+    transform: scale(2);
+}
+
+.host-profile img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}

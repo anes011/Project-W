@@ -10,6 +10,8 @@
 
 .accommodation-btns {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 5rem;
 }
 
@@ -28,4 +30,23 @@
 
 .accommodation-btns img {
     height: 50%;
+}
+
+@media (max-width: 581px) {
+    .step-2 {
+        gap: 10px;
+    }
+
+    .step-2 h1 {
+        font-size: 16px;
+    }
+
+    .accommodation-btns {
+        gap: 2rem;
+    }
+
+    .accommodation-btns button {
+        height: 100px;
+        width: 170px;
+    }
 }

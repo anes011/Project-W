@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: auto;
 }
 
 .step-3 h1 {
@@ -41,4 +42,30 @@
 
 .step-3 button p:nth-of-type(2) {
     width: 80%;
+}
+
+@media (max-width: 1473px) {
+    .step-3 h1 {
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+
+    .step-3 button {
+        margin-bottom: 10px;
+        padding: 10px 3rem;
+    }
+}
+
+@media (max-width: 966px) {
+    .description-container p:nth-of-type(2) {
+        display: none;
+    }
+}
+
+@media (max-width: 392px) {
+    .step-3 button {
+        flex-direction: column;
+        padding: 1rem 3rem;
+        gap: 1rem;
+    }
 }

@@ -1,0 +1,200 @@
+.profile-page {
+    padding-inline: 7rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-background {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 0 0 30px 30px;
+}
+
+.profile-details {
+    width: 100%;
+    height: 50%;
+    border-radius: 30px 30px 0 0;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, .8);
+    position: relative;
+    display: flex;
+}
+
+.profile-photo-name {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.profile-photo-name img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.left-section {
+    width: 50%;
+    height: 100%;
+    border-radius: 30px 0 0 0;
+    padding-inline: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.profile-email p:nth-of-type(1),
+.profile-phone-number p:nth-of-type(1) {
+    font-weight: 800;
+}
+
+.profile-email p:nth-of-type(2),
+.profile-phone-number p:nth-of-type(2) {
+    height: 50px;
+    width: 100%;
+    border: none;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid rgb(197, 41, 155);
+}
+
+.right-section {
+    width: 50%;
+    height: 100%;
+    border-radius: 0 30px 0 0;
+    padding-inline: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.profile-password p {
+    font-weight: 800;
+}
+
+.profile-password input {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-bottom: 2px solid rgb(197, 41, 155);
+}
+
+.profile-password input:focus {
+    outline: none;
+}
+
+.buttons-container {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons-container button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 45%;
+    background-color: rgb(197, 41, 155);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.buttons-container button svg {
+    transform: scale(1.3);
+}
+
+.change-profile-photo-btn label {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.change-profile-photo-btn label input {
+    display: none;
+}
+
+.delete-profile-btn {
+    padding: 5px 20px;
+    border: none;
+    background-color: red;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+}
+
+.overlay-active {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+    left: 0;
+}
+
+.password-field {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    z-index: 101;
+    transform: translateX(-50%);
+    top: -100%;
+    animation: password .3s forwards;
+}
+
+@keyframes password {
+    100% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.password-field input {
+    width: 100%;
+    height: 40px;
+}
+
+.password-field button {
+    height: 40px;
+    font-size: 1rem;
+    font-weight: 800;
+    background-color: rgb(197, 41, 155);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
