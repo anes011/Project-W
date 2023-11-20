@@ -1,22 +1,29 @@
 .accepted-offer {
+    display: flex;
+    justify-content: center;
+}
+
+.center-div {
     width: 100%;
+    max-width: 2000px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     border-radius: 20px;
-    overflow: hidden;
+    overflow: auto;
     background-color: rgb(197, 41, 155);
     color: #fff;
 }
 
-.accepted-offer div {
+.center-div div {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2rem;
     height: 50px;
+    min-width: 300px;
 }
 
-.accepted-offer div svg {
+.center-div div svg {
     transform: scale(2);
 }
 

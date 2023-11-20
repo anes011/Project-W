@@ -1,22 +1,29 @@
 .reservations-submitted {
+    display: flex;
+    justify-content: center;
+}
+
+.center-container {
     width: 100%;
+    max-width: 1500px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     border-radius: 10px;
-    overflow: hidden;
+    overflow: auto;
     background-color: rgb(197, 41, 155);
     color: #fff;
 }
 
-.reservations-submitted div {
+.center-container div {
     height: 50px;
+    min-width: 370px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2rem;
 }
 
-.reservations-submitted div svg {
+.center-container div svg {
     transform: scale(2);
 }
 

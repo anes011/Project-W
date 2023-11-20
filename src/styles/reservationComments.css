@@ -1,10 +1,10 @@
 .reservation-comments {
     width: 100%;
+    min-width: 230px;
     margin-top: 3rem;
     display: flex;
     justify-content: center;
     gap: 3rem;
-    flex-wrap: wrap;
     position: relative;
     padding-top: 4rem;
 }
@@ -13,6 +13,8 @@
     position: absolute;
     top: 0;
     width: 40%;
+    max-width: 700px;
+    min-width: 220px;
     height: 45px;
     border-radius: 5px;
     overflow: hidden;
@@ -46,9 +48,19 @@
     cursor: pointer;
 }
 
+.comments-field {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    max-width: 2000px;
+    min-width: 230px;
+}
+
 .comment-container {
     border: 2px solid;
     width: 40%;
+    min-width: 220px;
     padding: 10px;
     border-radius: 10px;
 }

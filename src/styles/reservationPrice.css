@@ -1,6 +1,8 @@
 .reservation-price {
     padding-inline: 2rem;
     width: 40%;
+    max-width: 1000px;
+    min-width: 300px;
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
@@ -90,13 +92,14 @@
 
 .step-1-res div {
     display: flex;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 3rem;
     align-items: center;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
 .step-1-res div svg {
-    transform: scale(4);
+    transform: scale(2);
 }
 
 .step-2-res {
@@ -112,6 +115,7 @@
 }
 
 .contact-info {
+    flex-wrap: wrap;
     gap: 2rem;
 }
 
@@ -129,13 +133,14 @@
 
 .step-3-res div {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 3rem;
+    margin-top: 1.5rem;
 }
 
 .step-3-res div svg {
-    transform: scale(4);
+    transform: scale(2);
 }
 
 .step-3-res div p span {

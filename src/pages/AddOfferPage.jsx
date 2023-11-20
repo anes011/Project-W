@@ -9,6 +9,7 @@ import Step7 from '../components/Step7';
 import Step8 from '../components/Step8';
 import Step9 from '../components/Step9';
 import Step10 from '../components/Step10';
+import Step11 from '../components/Step11';
 import StepsEnd from '../components/StepsEnd';
 import { useRef, useState } from 'react';
 
@@ -25,7 +26,7 @@ function AddOfferPage() {
     };
 
     const handleStepsPlus = () => {
-        if (steps < 11) {
+        if (steps < 12) {
             setSteps(steps + 1);
         }else {
             return
@@ -64,6 +65,9 @@ function AddOfferPage() {
                 progressBar.current.style.width = '90%';
             break;
             case 10:
+                progressBar.current.style.width = '95%';
+            break;
+            case 11:
                 progressBar.current.style.width = '100%';
             break;
         }
@@ -82,8 +86,9 @@ function AddOfferPage() {
                 {steps === 8 && (<Step8 />)}
                 {steps === 9 && (<Step9 />)}
                 {steps === 10 && (<Step10 />)}
-                {steps === 11 && (<StepsEnd />)}
-                <div ref={progressBar} className={steps === 11 ? 'progress-bar-hide' : 'progress-bar'}></div>
+                {steps === 11 && (<Step11 />)}
+                {steps === 12 && (<StepsEnd />)}
+                <div ref={progressBar} className={steps === 12 ? 'progress-bar-hide' : 'progress-bar'}></div>
             </div>
 
             <div className="back-next-container">

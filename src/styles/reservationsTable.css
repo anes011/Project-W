@@ -1,9 +1,15 @@
 .reservations-table {
+    display: flex;
+    justify-content: center;
+}
+
+.center-content {
     width: 100%;
+    max-width: 2000px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     border-radius: 10px;
-    overflow: hidden;
+    overflow: auto;
     background-color: rgb(197, 41, 155);
     color: #fff;
 }
@@ -15,6 +21,7 @@
     gap: 3rem;
     font-weight: 800;
     height: 50px;
+    min-width: 300px;
 }
 
 .dates {

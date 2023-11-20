@@ -1,0 +1,40 @@
+.step-11 {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.check-in-date, .check-out-date {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.check-in-date div, .check-out-date div {
+    width: fit-content;
+    position: relative;
+    width: 100%;
+    height: 50px;
+}
+
+.check-in-date div svg, .check-out-date div svg {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) scale(2);
+    left: 30px;
+}
+
+.check-in-date div input, .check-out-date div input {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    border: 2px solid;
+    font-size: 1rem;
+    text-indent: 9rem;
+}

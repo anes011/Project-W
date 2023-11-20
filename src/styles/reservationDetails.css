@@ -1,6 +1,11 @@
 .reservation-details {
     width: 60%;
+    max-width: 1000px;
     margin-top: 2rem;
+}
+
+.title {
+    min-width: 250px;
 }
 
 .profile {
@@ -30,6 +35,7 @@
 }
 
 .description {
+    min-width: 300px;
     margin-top: 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid rgb(191, 191, 191);
@@ -41,6 +47,7 @@
 
 .accommodation-type-rate {
     display: flex;
+    flex-wrap: wrap;
     margin-top: 1rem;
     gap: 4rem;
     padding-bottom: 1rem;
@@ -85,6 +92,8 @@
 
 .place-type div {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
     gap: 4rem;
     width: fit-content;
@@ -99,6 +108,7 @@
 .address-container {
     margin-top: 1rem;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 4rem;
     padding-bottom: 1rem;
@@ -127,6 +137,8 @@
 
 .more-details {
     display: flex;
+    flex-wrap: wrap;
+    row-gap: 2rem;
     margin-top: 2rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid rgb(191, 191, 191);
@@ -155,6 +167,7 @@
 
 .provided-amenities {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
     margin-top: 1rem;
@@ -175,6 +188,7 @@
     justify-content: center;
     height: 140px;
     width: 21%;
+    min-width: 200px;
     border-radius: 10px;
     background-color: #000;
     color: #fff;
