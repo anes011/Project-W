@@ -10,25 +10,32 @@ import MyOffersPage from './pages/MyOffersPage';
 import AcceptedOffersPage from './pages/AcceptedOffersPage';
 import ProfilePage from './pages/ProfilePage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import data from './Context';
+import { useEffect, useState } from 'react';
 
 function App() {
+
+  const [userName, setUserName] = useState(null);
+
   return (
-    <div className="App">
-      <Router>
-        <Routes>
-          <Route path='/' element={<WelcomePage />} />
-          <Route path='/signing-page' element={<SignPage />} />
-          <Route path='/more-user-info' element={<MoreUserInfoPage />} />
-          <Route path='/add-offer' element={<AddOfferPage />} />
-          <Route path='/reservation' element={<ReservationPage />} />
-          <Route path='/reservations-cart' element={<ReservationsCart />} />
-          <Route path='/reservations-submitted' element={<ReservationsSubmittedPage />} />
-          <Route path='/my-offers' element={<MyOffersPage />} />
-          <Route path='/accepted-offers' element={<AcceptedOffersPage />} />
-          <Route path='/profile-page' element={<ProfilePage />} />
-        </Routes>
-      </Router>
-    </div>
+    <data.Provider value={{ userName, setUserName }}>
+        <div className="App">
+          <Router>
+            <Routes>
+              <Route path='/' element={<WelcomePage />} />
+              <Route path='/signing-page' element={<SignPage />} />
+              <Route path='/more-user-info' element={<MoreUserInfoPage />} />
+              <Route path='/add-offer' element={<AddOfferPage />} />
+              <Route path='/reservation' element={<ReservationPage />} />
+              <Route path='/reservations-cart' element={<ReservationsCart />} />
+              <Route path='/reservations-submitted' element={<ReservationsSubmittedPage />} />
+              <Route path='/my-offers' element={<MyOffersPage />} />
+              <Route path='/accepted-offers' element={<AcceptedOffersPage />} />
+              <Route path='/profile-page' element={<ProfilePage />} />
+            </Routes>
+          </Router>
+        </div>
+    </data.Provider>
   );
 }
 
