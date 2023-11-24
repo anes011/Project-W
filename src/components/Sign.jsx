@@ -1,38 +1,42 @@
 import '../styles/sign.css';
 import SignBackground from '../images&logos/liquid-pink-blue-abstract.jpg';
-import { useRef, useState } from 'react';
+import Show from '../images&logos/show-solid-24.png';
+import Hide from '../images&logos/hide-solid-24.png';
+import { useContext, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import data from '../Context';
 
 function Sign() {
+
+    const redirect = useNavigate();
+
+    const {setUserName, setEmail, setPassword, setDisableSignRoutes} = useContext(data);
 
     const [inputActiveUserName, setInputActiveUserName] = useState(false);
     const [inputActiveEmail, setInputActiveEmail] = useState(false);
     const [inputActivePassword, setInputActivePassword] = useState(false);
     const [signIn, setSignIn] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [signUpLoading, setSignUpLoading] = useState(false);
+    const [signInLoading, setSignInLoading] = useState(false);
 
-    const userNameContainer = useRef(null);
-    const emailContainer = useRef(null);
-    const passwordContainer = useRef(null);
+    const userNameInput = useRef(null);
+    const emailInputSignUp = useRef(null);
+    const passwordInputSignUp = useRef(null);
+    const emailInputSignIn = useRef(null);
+    const passwordInputSignIn = useRef(null);
 
-    const handleInputActiveUserName = (e) => {
-        e.stopPropagation();
+    const handleInputActiveUserName = () => {
         setInputActiveUserName(true);
     }
 
-    const handleInputActiveEmail = (e) => {
-        e.stopPropagation();
+    const handleInputActiveEmail = () => {
         setInputActiveEmail(true);
     }
 
-    const handleInputActivePassword = (e) => {
-        e.stopPropagation();
+    const handleInputActivePassword = () => {
         setInputActivePassword(true);
     }
-
-    document.addEventListener('click', (e) => {
-        e.target !== userNameContainer.current && setInputActiveUserName(false);
-        e.target !== emailContainer.current && setInputActiveEmail(false);
-        e.target !== passwordContainer.current && setInputActivePassword(false);
-    });
 
     const moveToSignIn = () => {
         setSignIn(true);
@@ -41,6 +45,67 @@ function Sign() {
     const moveToSignUp = () => {
         setSignIn(false);
     }
+
+    const createUser = () => {
+        const userNameRegex = /^[a-zA-Z]{4}[a-zA-Z0-9]*$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const passwordRegex = /^.{8,}$/;
+
+        if (userNameRegex.test(userNameInput.current.value) &&
+            emailRegex.test(emailInputSignUp.current.value) &&
+            passwordRegex.test(passwordInputSignUp.current.value)) {
+            setUserName(userNameInput.current.value);
+            setEmail(emailInputSignUp.current.value);
+            setPassword(passwordInputSignUp.current.value);
+
+            setSignUpLoading(true);
+
+            setTimeout(() => {
+                setSignUpLoading(false);
+                redirect('/more-user-info');
+                setDisableSignRoutes(true);
+            }, 2000);
+        } else {
+            alert('user name must be at least 4 letter characters long!');
+            alert('email must be valid!');
+            alert('password must be at least 8 characters long!');
+        };
+    };
+
+    const logIn = () => {
+        const logInApi = async () => {
+            if (emailInputSignIn.current && passwordInputSignIn.current) {
+                try {
+                    const response = await fetch('http://localhost:4000/users/compare', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            email: emailInputSignIn.current.value,
+                            password: passwordInputSignIn.current.value
+                        })
+                    });
+                    const data = await response.json();
+                    if (data.status === 'Success') {
+                        setSignInLoading(true);
+
+                        setTimeout(() => {
+                            localStorage.setItem('userAccount', JSON.stringify(data.User));
+                            redirect('/');
+                            setDisableSignRoutes(true);
+                        }, 2000);
+                    } else {
+                        alert('somthing went wrong, please recheck your log-in credentials!')
+                    }
+                } catch (err) {
+                    console.error(err);
+                }
+            }
+        };
+
+        logInApi();
+    };
 
     return(
         <div className="sign-container">
@@ -55,41 +120,54 @@ function Sign() {
                 {
                     signIn ? (
                         <div className="sign-in-container">
-                            <div ref={emailContainer} onClick={handleInputActiveEmail} className="email-container">
+                            <div onClick={handleInputActiveEmail} className="email-container">
                                 <p className={inputActiveEmail ? 'email-p-active' : 'email-p'}>Email:</p>
-                                <input type="email" className="email-input" />
+                                <input ref={emailInputSignIn} type="email" className="email-input" />
                             </div>
 
-                            <div ref={passwordContainer} onClick={handleInputActivePassword} className="password-container">
+                            <div onClick={handleInputActivePassword} className="password-container">
                                 <p className={inputActivePassword ? 'password-p-active' : 'password-p'}>Password:</p>
-                                <input type="password" className="password-input" />
+                                <input ref={passwordInputSignIn} type={showPassword ? 'text' : 'password'} className="password-input" />
+                                <img onClick={() => setShowPassword(!showPassword)} src={showPassword ? Show : Hide} alt={showPassword ? 'show password icon' : 'hide password icon'} />
                             </div>
 
-                            <button className="sign-up-btn">SIGN IN</button>
+                            <button onClick={logIn} className="sign-in-btn">
+                                {
+                                    signInLoading ? (
+                                        <div className="loading"></div>
+                                    ) : (
+                                        <p>SIGN IN</p>
+                                    )
+                                }
+                            </button>
                         </div>
                     ) : (
                         <div className="sign-up-container">
-                            <div ref={userNameContainer} onClick={handleInputActiveUserName} className="user-name-container">
+                            <div onClick={handleInputActiveUserName} className="user-name-container">
                                 <p className={inputActiveUserName ? 'user-name-p-active' : 'user-name-p'}>User Name:</p>
-                                <input type="text" className="user-name-input" />
+                                <input ref={userNameInput} type="text" className="user-name-input" />
                             </div>
 
-                            <div ref={emailContainer} onClick={handleInputActiveEmail} className="email-container">
+                            <div onClick={handleInputActiveEmail} className="email-container">
                                 <p className={inputActiveEmail ? 'email-p-active' : 'email-p'}>Email:</p>
-                                <input type="email" className="email-input" />
+                                <input ref={emailInputSignUp} type="email" className="email-input" />
                             </div>
 
-                            <div ref={passwordContainer} onClick={handleInputActivePassword} className="password-container">
+                            <div onClick={handleInputActivePassword} className="password-container">
                                 <p className={inputActivePassword ? 'password-p-active' : 'password-p'}>Password:</p>
-                                <input type="password" className="password-input" />
+                                <input ref={passwordInputSignUp} type={showPassword ? 'text' : 'password'} className="password-input" />
+                                <img onClick={() => setShowPassword(!showPassword)} src={showPassword ? Show : Hide} alt={showPassword ? 'show password icon' : 'hide password icon'} />
                             </div>
 
-                            <div className="term-of-services">
-                                <input type="checkbox" />
-                                <p>I agree to <a href="">terms of services</a></p>
-                            </div>
-
-                            <button className="sign-up-btn">SIGN UP</button>
+                            <button onClick={createUser} className="sign-up-btn">
+                                {
+                                    signUpLoading ? (
+                                        <div className="loading"></div>
+                                    ) : (
+                                        <p>SIGN UP</p>
+                                    )
+                                }
+                            </button>
                         </div>
                     )
                 }

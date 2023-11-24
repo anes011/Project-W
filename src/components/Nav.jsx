@@ -1,8 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import '../styles/nav.css';
 import { Link } from 'react-router-dom';
+import data from '../Context';
 
 function Nav() {
+
+    const {setUserIsLogged, userIsLogged} = useContext(data);
 
     const menuBtn = useRef(null);
     const menuDropDown = useRef(null);
@@ -12,6 +15,8 @@ function Nav() {
     const [languageClicked, setLanguageClicked] = useState(false);
     const [addOfferInMenu, setAddOfferInMenu] = useState(false);
     const [profileInMenu, setProfileInMenu] = useState(false);
+    const [profilePhoto, setProfilePhoto] = useState(null);
+    const [userName, setUserName] = useState(null);
 
     const handleMenuDropDown = (e) => {
         e.stopPropagation();
@@ -61,8 +66,21 @@ function Nav() {
 
     useEffect(() => {
         responsiveNav();
-    })
-        
+    });
+
+    const user = localStorage.getItem('userAccount');
+
+    useEffect(() => {
+        if (user !== null) {
+            setProfilePhoto(JSON.parse(user).profilePhoto);
+            setUserName(JSON.parse(user).userName);
+        }
+    });    
+
+    const logout = () => {
+        localStorage.removeItem('userAccount');
+        window.location.reload();
+    };
 
     return(
         <div ref={nav} className="nav">
@@ -79,8 +97,8 @@ function Nav() {
                             profileInMenu && (
                                 <Link className='link' to='/profile-page'>
                                     <div className="profile-section">
-                                        <img src="https://plus.unsplash.com/premium_photo-1664870883044-0d82e3d63d99?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" className="profile-photo" />
-                                        <p>User</p>
+                                        <img src={profilePhoto !== null ? `http://localhost:4000/${profilePhoto}` : 'https://plus.unsplash.com/premium_photo-1664870883044-0d82e3d63d99?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'} alt="" className="profile-photo" />
+                                        <p>{userName !== null ? userName : 'User'}</p>
                                     </div>
                                 </Link>
                             )
@@ -137,7 +155,7 @@ function Nav() {
                             </div>
                         </Link>
 
-                        <div className="logout menu-element">
+                        <div onClick={logout} className="logout menu-element">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-power" viewBox="0 0 16 16">
                                 <path d="M7.5 1v7h1V1h-1z"/>
                                 <path d="M3 8.812a4.999 4.999 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812z"/>
@@ -179,10 +197,10 @@ function Nav() {
 
                 <Link className='profile-link' to='/profile-page'>
                     <div className="profile-container">
-                        <img src="https://plus.unsplash.com/premium_photo-1664870883044-0d82e3d63d99?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" className="profile-photo" />
+                        <img src={profilePhoto !== null ? `http://localhost:4000/${profilePhoto}` : 'https://plus.unsplash.com/premium_photo-1664870883044-0d82e3d63d99?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'} alt="" className="profile-photo" />
                         <div className="profile-p">
                             <p>Hello</p>
-                            <p>User</p>
+                            <p>{userName !== null ? userName : 'User'}</p>
                         </div>
                     </div>
                 </Link>

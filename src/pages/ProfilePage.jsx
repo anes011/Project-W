@@ -1,10 +1,27 @@
 import '../styles/profilePage.css';
 import Background from '../images&logos/liquid-pink-blue-abstract.jpg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function ProfilePage() {
 
     const [changePassword, setChangePassword] = useState(false);
+    const [profilePhoto, setProfilePhoto] = useState(null);
+    const [userName, setUserName] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [phoneNumber, setPhoneNumber] = useState(null);
+    const [password, setPassword] = useState(null);
+
+    const user = localStorage.getItem('userAccount');
+
+    useEffect(() => {
+        if (user !== null) {
+            setProfilePhoto(JSON.stringify(user).profilePhoto);
+            setUserName(JSON.stringify(user).userName);
+            setEmail(JSON.stringify(user).email);
+            setPhoneNumber(JSON.stringify(user).phoneNumber);
+            setPassword(JSON.stringify(user).password);
+        }
+    }, []);
 
     return(
         <div className="profile-page">
@@ -34,26 +51,26 @@ function ProfilePage() {
 
             <div className="profile-details">
                 <div className='profile-photo-name'>
-                    <p>User</p>
-                    <img src="https://plus.unsplash.com/premium_photo-1664870883044-0d82e3d63d99?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" className="profile-photo" />
+                    <p>{userName !== null ? userName : 'User'}</p>
+                    <img src={profilePhoto !== null ? `http://localhost:4000/${profilePhoto}` : 'https://plus.unsplash.com/premium_photo-1664870883044-0d82e3d63d99?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'} alt="" className="profile-photo" />
                 </div>
 
                 <div className="left-section">
                     <div className="profile-email">
                         <p>Email:</p>
-                        <p>user@gmail.com</p>
+                        <p>{email !== null ? email : 'user@gmail.com'}</p>
                     </div>
                     
                     <div className="profile-phone-number">
                         <p>Phone Number:</p>
-                        <p>00011111000111</p>
+                        <p>{phoneNumber !== null ? phoneNumber : '00011111000111'}</p>
                     </div>
                 </div>
 
                 <div className="right-section">
                     <div className="profile-password">
                         <p>Password:</p>
-                        <input type="password" readOnly value='this is a password' />
+                        <input type="password" readOnly value={password !== null ? password : 'this is a password'} />
                     </div>
 
                     <div className="buttons-container">

@@ -1,7 +1,6 @@
 .more-user-info {
     width: 100%;
     max-width: 1000px;
-    /* height: 450px; */
     border-radius: 20px;
     overflow: hidden;
     display: flex;
@@ -12,7 +11,7 @@
     transform: translate(-50%, -50%);
 }
 
-.more-user-info div {
+.more-user-info div:not(.loading) {
     width: 100%;
 }
 
@@ -69,7 +68,7 @@
     margin-top: 1rem;
 }
 
-.location-phone-container div {
+.location-container, .phone-number-container {
     border: 2px solid;
     width: 100%;
     height: 50px;
@@ -100,6 +99,9 @@
 .location-phone-container button {
     width: 100%;
     height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 1rem;
     font-weight: 800;
     background-color: rgb(197, 41, 155);
