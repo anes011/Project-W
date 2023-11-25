@@ -8,11 +8,15 @@ function ReservationSlider() {
     const sliderContainer = useRef(null);
 
     const handlePrevious = () => {
-        sliderContainer.current.scrollLeft -= sliderContainer.current.clientWidth;
+        if (sliderContainer.current) {
+            sliderContainer.current.scrollLeft -= sliderContainer.current.clientWidth;
+        }
     };
 
     const handleNext = () => {
-        sliderContainer.current.scrollLeft += sliderContainer.current.clientWidth;
+        if (sliderContainer.current) {
+            sliderContainer.current.scrollLeft += sliderContainer.current.clientWidth;
+        }
     };
 
     useEffect(() => {
@@ -23,7 +27,9 @@ function ReservationSlider() {
         }, 1000);
 
         const interval2 = setInterval(() => {
-            sliderContainer.current.scrollLeft = 0;
+            if (sliderContainer.current) {
+                sliderContainer.current.scrollLeft = 0;
+            }
         }, 5000);
 
         sliderContainer.current.addEventListener('mouseover', () => {

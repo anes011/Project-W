@@ -10,7 +10,7 @@ function Sign() {
 
     const redirect = useNavigate();
 
-    const {setUserName, setEmail, setPassword, setDisableSignRoutes} = useContext(data);
+    const {setUserName, setEmail, setPassword} = useContext(data);
 
     const [inputActiveUserName, setInputActiveUserName] = useState(false);
     const [inputActiveEmail, setInputActiveEmail] = useState(false);
@@ -63,7 +63,6 @@ function Sign() {
             setTimeout(() => {
                 setSignUpLoading(false);
                 redirect('/more-user-info');
-                setDisableSignRoutes(true);
             }, 2000);
         } else {
             alert('user name must be at least 4 letter characters long!');
@@ -93,7 +92,7 @@ function Sign() {
                         setTimeout(() => {
                             localStorage.setItem('userAccount', JSON.stringify(data.User));
                             redirect('/');
-                            setDisableSignRoutes(true);
+                            localStorage.setItem('signRoutes', 'false');
                         }, 2000);
                     } else {
                         alert('somthing went wrong, please recheck your log-in credentials!')

@@ -18,16 +18,17 @@ function App() {
   const [userName, setUserName] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const [disableSignRoutes, setDisableSignRoutes] = useState(false);
+
+  const signRoutes = localStorage.getItem('signRoutes');
 
   return (
-    <data.Provider value={{ userName, setUserName, email, setEmail, password, setPassword, setDisableSignRoutes }}>
+    <data.Provider value={{ userName, setUserName, email, setEmail, password, setPassword }}>
         <div className="App">
           <Router>
             <Routes>
               <Route path='/' element={<WelcomePage />} />
-              <Route path={disableSignRoutes ? '' : '/signing-page'} element={<SignPage />} />
-              <Route path={disableSignRoutes ? '' : '/more-user-info'} element={<MoreUserInfoPage />} />
+              <Route path={signRoutes === 'false' ? '' : '/signing-page'} element={<SignPage />} />
+              <Route path={signRoutes === 'false' ? '' : '/more-user-info'} element={<MoreUserInfoPage />} />
               <Route path='/add-offer' element={<AddOfferPage />} />
               <Route path='/reservation' element={<ReservationPage />} />
               <Route path='/reservations-cart' element={<ReservationsCart />} />

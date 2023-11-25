@@ -2,6 +2,7 @@
     height: 100%;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 3rem;
@@ -9,6 +10,7 @@
 
 .check-in-date, .check-out-date {
     width: 30%;
+    min-width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;

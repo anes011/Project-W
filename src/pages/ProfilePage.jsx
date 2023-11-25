@@ -1,8 +1,12 @@
 import '../styles/profilePage.css';
 import Background from '../images&logos/liquid-pink-blue-abstract.jpg';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Nav from '../components/Nav';
 
 function ProfilePage() {
+
+    const redirect = useNavigate();
 
     const [changePassword, setChangePassword] = useState(false);
     const [profilePhoto, setProfilePhoto] = useState(null);
@@ -10,39 +14,151 @@ function ProfilePage() {
     const [email, setEmail] = useState(null);
     const [phoneNumber, setPhoneNumber] = useState(null);
     const [password, setPassword] = useState(null);
+    const [changeProfilePhoto, setChangeProfilePhoto] = useState(null);
+    const [newPassword, setNewPassword] = useState(null);
+
+    const currentPasswordInput = useRef(null);
+    const newPasswordInput = useRef(null);
+    const confirmPasswordInput = useRef(null);
 
     const user = localStorage.getItem('userAccount');
 
     useEffect(() => {
         if (user !== null) {
-            setProfilePhoto(JSON.stringify(user).profilePhoto);
-            setUserName(JSON.stringify(user).userName);
-            setEmail(JSON.stringify(user).email);
-            setPhoneNumber(JSON.stringify(user).phoneNumber);
-            setPassword(JSON.stringify(user).password);
+            setProfilePhoto(JSON.parse(user).profilePhoto);
+            setUserName(JSON.parse(user).userName);
+            setEmail(JSON.parse(user).email);
+            setPhoneNumber(JSON.parse(user).phoneNumber);
+            setPassword(JSON.parse(user).password);
         }
     }, []);
 
+    const createNewPassword = () => {
+        const compareApi = async () => {
+            if (email !== null) {
+                try {
+                    const response = await fetch('http://localhost:4000/users/compare', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            email: email,
+                            password: currentPasswordInput.current.value
+                        })
+                    });
+                    const data = await response.json();
+
+                    const passwordRegex = /^.{8,}$/;
+                    
+                    if (passwordRegex.test(newPasswordInput.current.value) && 
+                        passwordRegex.test(confirmPasswordInput.current.value) && 
+                        newPasswordInput.current.value === confirmPasswordInput.current.value &&
+                        data.status === 'Success') {
+                        setNewPassword(confirmPasswordInput.current.value);
+                    } else {
+                        alert('somthing went wrong, please recheck your credentials!');
+                    }
+                } catch (err) {
+                    console.error(err);
+                }
+            }
+        }
+
+        compareApi();
+
+
+
+        if (newPassword !== null && user !== null) {
+            const updatePasswordApi = async () => {
+                try {
+                    const response = await fetch(`http://localhost:4000/users/updatePassword/${JSON.parse(user)._id}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            password: newPassword
+                        })
+                    });
+                    const data = await response.json();
+                    alert('password changed successfully!');
+                    localStorage.setItem('userAccount', JSON.stringify(data.update));
+                    window.location.reload();
+                } catch (err) {
+                    console.error(err);
+                }
+            };
+
+            updatePasswordApi();
+        }
+    };
+
+    useEffect(() => {
+        if (changeProfilePhoto !== null && user !== null) {
+            const formData = new FormData();
+            formData.append('profilePhoto', changeProfilePhoto);
+            const changePhotoApi = async () => {
+                try {
+                    const response = await fetch(`http://localhost:4000/users/${JSON.parse(user)._id}`, {
+                        method: 'PATCH',
+                        body: formData
+                    });
+                    const data = await response.json();
+                    alert('photo changed successfully!');
+                    localStorage.setItem('userAccount', JSON.stringify(data.update));
+                    window.location.reload();
+                } catch (err) {
+                    console.error(err);
+                }
+            }
+
+            changePhotoApi();
+        }
+    });
+
+    const deleteAccount = () => {
+        if (user !== null) {
+            const deleteAccountApi = async () => {
+                try {
+                    const response = await fetch(`http://localhost:4000/users/${JSON.parse(user)._id}`, {
+                        method: 'Delete'
+                    });
+                    const data = await response.json();
+                    alert('Your account has been deleted!');
+                    localStorage.removeItem('userAccount');
+                    localStorage.setItem('signRoutes', 'true');
+                    redirect('/');
+                } catch (err) {
+                    console.error(err);
+                }
+            };
+
+            deleteAccountApi();
+        }
+    };
+
     return(
         <div className="profile-page">
+            <Nav />
             <div onClick={() => setChangePassword(false)} className={changePassword ? 'overlay-active' : 'overlay'}></div>
             {
                 changePassword && (
                     <div className="password-field">
                         <div>
                             <p>Current password:</p>
-                            <input type="password" />
+                            <input ref={currentPasswordInput} type="password" />
                         </div>
                         <div>
                             <p>New password:</p>
-                            <input type="password" />
+                            <input ref={newPasswordInput} type="password" />
                         </div>
                         <div>
                             <p>Confirm new password:</p>
-                            <input type="password" />
+                            <input ref={confirmPasswordInput} type="password" />
                         </div>
 
-                        <button>Save</button>
+                        <button onClick={createNewPassword}>Save</button>
                     </div>
                 )
             }
@@ -82,7 +198,7 @@ function ProfilePage() {
                         </button>
                         <button className="change-profile-photo-btn">
                             <label htmlFor="profile-photo">
-                                <input id='profile-photo' type="file" />
+                                <input onChange={(e) => setChangeProfilePhoto(e.target.files[0])} id='profile-photo' type="file" />
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
                                     <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
                                     <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
@@ -92,7 +208,7 @@ function ProfilePage() {
                         </button>
                     </div>
 
-                    <button className="delete-profile-btn">
+                    <button onClick={deleteAccount} className="delete-profile-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                             <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
                         </svg>

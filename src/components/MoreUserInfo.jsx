@@ -8,7 +8,7 @@ function MoreUserInfo() {
 
     const redirect = useNavigate();
 
-    const {userName, email, password, setDisableSignRoutes} = useContext(data);
+    const {userName, email, password} = useContext(data);
 
     const [profilePhoto, setProfilePhoto] = useState(null);
     const [registerLoading, setRegisterLoading] = useState(false);
@@ -45,7 +45,7 @@ function MoreUserInfo() {
                             
                             setTimeout(() => {
                                 redirect('/');
-                                setDisableSignRoutes(true);
+                                localStorage.setItem('signRoutes', 'false');
                             }, 2000);
                         } catch (err) {
                             console.error(err);

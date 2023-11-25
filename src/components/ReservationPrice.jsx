@@ -1,8 +1,12 @@
 import '../styles/reservationPrice.css';
 import ReserveIcon from '../images&logos/calendar-checkmark-line-icon.svg';
 import PaymentIcon from '../images&logos/face-to-face-payment-2-512.png';
+import { useNavigate } from 'react-router-dom';
 
 function ReservationPrice() {
+
+    const redirect = useNavigate();
+
     return(
         <div className="reservation-price">
             <div className="price-table">
@@ -20,7 +24,7 @@ function ReservationPrice() {
                     </div>
                 </div>
 
-                <button className="reserve-btn">
+                <button onClick={() => localStorage.getItem('userAccount') === null && redirect('/signing-page')} className="reserve-btn">
                     <p>Reserve</p>
                     <img src={ReserveIcon} alt="" />
                 </button>
