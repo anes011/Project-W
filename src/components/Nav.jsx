@@ -90,7 +90,7 @@ function Nav() {
     const logout = () => {
         localStorage.removeItem('userAccount');
         localStorage.setItem('signRoutes', 'true');
-        window.location.reload();
+        redirect('/');
     };
 
     const handleOpenSearch = (e) => {
