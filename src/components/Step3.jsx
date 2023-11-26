@@ -1,11 +1,16 @@
 import '../styles/step3.css';
+import data from '../Context';
+import { useContext } from 'react';
 
 function Step3() {
+
+    const {setSpaceGiven} = useContext(data);
+
     return(
         <div className="step-3">
             <h1>What type of place will guests have?</h1>
 
-            <button className="entire-house-btn">
+            <button onClick={() => setSpaceGiven('entire-house')} className="entire-house-btn">
                 <div className="description-container">
                     <p>An entire place</p>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, exercitationem.</p>
@@ -16,7 +21,7 @@ function Step3() {
                 </svg>
             </button>
 
-            <button className="room-btn">
+            <button onClick={() => setSpaceGiven('room')} className="room-btn">
                 <div className="description-container">
                     <p>A room</p>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur repudiandae, eos fugiat inventore quidem similique quos voluptas explicabo aut commodi!</p>
@@ -26,7 +31,7 @@ function Step3() {
                 </svg>
             </button>
 
-            <button className="shared-room-btn">
+            <button onClick={() => setSpaceGiven('shared-room')} className="shared-room-btn">
                 <div className="description-container">
                     <p>A shared room</p>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nam in repellat omnis, quia voluptate!</p>

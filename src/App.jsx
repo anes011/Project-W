@@ -19,10 +19,38 @@ function App() {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
+  const [placeType, setPlaceType] = useState(null);
+  const [spaceGiven, setSpaceGiven] = useState(null);
+  const [location, setLocation] = useState(null);
+  const [guests, setGuests] = useState(null);
+  const [bedrooms, setBedrooms] = useState(null);
+  const [beds, setBeds] = useState(null);
+  const [bathrooms, setBathrooms] = useState(null);
+  const [wifi, setWifi] = useState(false);
+  const [tv, setTv] = useState(false);
+  const [washer, setWasher] = useState(false);
+  const [parking, setParking] = useState(false);
+  const [airConditioning, setAirConditioning] = useState(false);
+  const [pool, setPool] = useState(false);
+  const [firstAidKit, setFirstAidKit] = useState(false);
+  const [fireDistinguisher, setFireDistinguisher] = useState(false);
+  const [offerImages, setOfferImages] = useState(null);
+  const [title, setTitle] = useState(null);
+  const [description, setDescription] = useState(null);
+  const [price, setPrice] = useState(null);
+  const [checkIn, setCheckIn] = useState(null);
+  const [checkOut, setCheckOut] = useState(null);
+
   const signRoutes = localStorage.getItem('signRoutes');
 
   return (
-    <data.Provider value={{ userName, setUserName, email, setEmail, password, setPassword }}>
+    <data.Provider value={{ userName, setUserName, email, setEmail, password, setPassword,
+    placeType, setPlaceType, spaceGiven, setSpaceGiven, location, setLocation, guests,
+    setGuests, bedrooms, setBedrooms, beds, setBeds, bathrooms, setBathrooms, wifi, setWifi,
+    tv, setTv, washer, setWasher, parking, setParking, airConditioning, setAirConditioning,
+    pool, setPool, firstAidKit, setFirstAidKit, fireDistinguisher, setFireDistinguisher, offerImages,
+    setOfferImages, title, setTitle, description, setDescription, price, setPrice, checkIn,
+    setCheckIn, checkOut, setCheckOut }}>
         <div className="App">
           <Router>
             <Routes>

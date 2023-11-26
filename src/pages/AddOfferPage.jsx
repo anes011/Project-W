@@ -11,11 +11,16 @@ import Step9 from '../components/Step9';
 import Step10 from '../components/Step10';
 import Step11 from '../components/Step11';
 import StepsEnd from '../components/StepsEnd';
-import { useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import data from '../Context';
 
 function AddOfferPage() {
 
+    const {placeType, spaceGiven, location} = useContext(data);
+
     const [steps, setSteps] = useState(1);
+
+    const progressBar = useRef(null);
 
     const handleStepsMinus = () => {
         if (steps > 1) {
@@ -33,7 +38,28 @@ function AddOfferPage() {
         }
     };
 
-    const progressBar = useRef(null);
+    useEffect(() => {
+        if (steps === 3) {
+            if (placeType === null) {
+                setSteps(2);
+                alert('please choose one!');
+            }
+        };
+
+        if (steps === 4) {
+            if (spaceGiven === null) {
+                setSteps(3);
+                alert('please choose one!');
+            }
+        };
+        
+        if (steps === 5) {
+            if (location === null) {
+                setSteps(4);
+                alert('location must be at least 4 characters long, and at least one letter!');
+            }
+        };
+    })
 
     if (progressBar.current) {
         switch (steps) {
