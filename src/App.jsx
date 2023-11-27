@@ -11,7 +11,7 @@ import AcceptedOffersPage from './pages/AcceptedOffersPage';
 import ProfilePage from './pages/ProfilePage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import data from './Context';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function App() {
 
@@ -22,10 +22,10 @@ function App() {
   const [placeType, setPlaceType] = useState(null);
   const [spaceGiven, setSpaceGiven] = useState(null);
   const [location, setLocation] = useState(null);
-  const [guests, setGuests] = useState(null);
-  const [bedrooms, setBedrooms] = useState(null);
-  const [beds, setBeds] = useState(null);
-  const [bathrooms, setBathrooms] = useState(null);
+  const [guests, setGuests] = useState(1);
+  const [bedrooms, setBedrooms] = useState(3);
+  const [beds, setBeds] = useState(1);
+  const [bathrooms, setBathrooms] = useState(2);
   const [wifi, setWifi] = useState(false);
   const [tv, setTv] = useState(false);
   const [washer, setWasher] = useState(false);

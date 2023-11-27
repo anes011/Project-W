@@ -1,12 +1,22 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import '../styles/step5.css';
+import data from '../Context';
 
 function Step5() {
+
+    const {setGuests, setBedrooms, setBeds, setBathrooms} = useContext(data);
 
     const [guestsCount, setGuestsCount] = useState(1);
     const [bedroomsCount, setBedroomsCount] = useState(3);
     const [bedsCount, setBedsCount] = useState(1);
     const [bathroomsCount, setBathroomsCount] = useState(2);
+
+    useEffect(() => {
+        setGuests(guestsCount);
+        setBedrooms(bedroomsCount);
+        setBeds(bedsCount);
+        setBathrooms(bathroomsCount);
+    });
 
     const handleGuestsMinus = () => {
         if (guestsCount > 0) {

@@ -16,11 +16,15 @@ import data from '../Context';
 
 function AddOfferPage() {
 
-    const {placeType, spaceGiven, location} = useContext(data);
+    const {placeType, spaceGiven, location, guests, bedrooms, beds, bathrooms, wifi, tv,
+    washer, parking, airConditioning, pool, firstAidKit, fireDistinguisher, offerImages, title, 
+    description, price, checkIn, checkOut} = useContext(data);
 
     const [steps, setSteps] = useState(1);
 
     const progressBar = useRef(null);
+
+    const user = localStorage.getItem('userAccount');
 
     const handleStepsMinus = () => {
         if (steps > 1) {
@@ -57,6 +61,84 @@ function AddOfferPage() {
             if (location === null) {
                 setSteps(4);
                 alert('location must be at least 4 characters long, and at least one letter!');
+            }
+        };
+
+        if (steps === 8) {
+            if (offerImages === null || Object.values(offerImages).length < 3) {
+                setSteps(7);
+                alert('please add at least 3 images!');
+            }
+        };
+
+        if (steps === 9) {
+            if (title === null) {
+                setSteps(8);
+                alert('title must be at least 4 letters!');
+            }
+        };
+
+        if (steps === 10) {
+            if (description === null) {
+                setSteps(9);
+                alert('please enter at least 10 characters!');
+            }
+        };
+
+        if (steps === 11) {
+            if (price === null) {
+                setSteps(10);
+                alert('please enter a valid price');
+            }
+        };
+
+        if (steps === 12) {
+            if (checkIn === null && checkOut === null || checkIn === null || checkOut === null) {
+                setSteps(11);
+                alert('please insert valid dates!');
+            } else {
+                if (placeType !== null && spaceGiven !== null && location !== null &&
+                offerImages !== null && title !== null && description !== null && price !== null &&
+                checkIn !== null && checkOut !== null && user !== null) {
+                    const formData = new FormData();
+                    formData.append('hostID', JSON.parse(user)._id);
+                    formData.append('placeType', placeType);
+                    formData.append('spaceGiven', spaceGiven);
+                    formData.append('location', location);
+                    formData.append('guests', guests);
+                    formData.append('bedrooms', bedrooms);
+                    formData.append('beds', beds);
+                    formData.append('bathrooms', bathrooms);
+                    formData.append('wifi', wifi);
+                    formData.append('tv', tv);
+                    formData.append('washer', washer);
+                    formData.append('parking', parking);
+                    formData.append('airConditioning', airConditioning);
+                    formData.append('pool', pool);
+                    formData.append('firstAidKit', firstAidKit);
+                    formData.append('fireDistinguisher', fireDistinguisher);
+                    Object.values(offerImages).map((x) => {
+                        formData.append('offerImages', x);
+                    });
+                    formData.append('title', title);
+                    formData.append('description', description);
+                    formData.append('price', price);
+                    formData.append('checkIn', checkIn);
+                    formData.append('checkOut', checkOut);
+                    const addOfferApi = async () => {
+                        try {
+                            const response = await fetch('http://localhost:4000/addOffer', {
+                                method: 'POST',
+                                body: formData
+                            });
+                            const data = await response.json();
+                        } catch (err) {
+                            console.error(err);
+                        }
+                    };
+
+                    addOfferApi();
+                }
             }
         };
     })

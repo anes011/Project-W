@@ -18,6 +18,20 @@
     max-height: 400px;
     border-radius: 10px;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.upload-photo-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.upload-photo-container div {
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -25,7 +39,6 @@
     font-size: 1.3rem;
     font-weight: 800;
     color: rgb(197, 41, 155);
-    cursor: pointer;
 }
 
 .upload-photo-container svg {
