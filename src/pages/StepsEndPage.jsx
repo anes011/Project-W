@@ -1,9 +1,11 @@
-import '../styles/stepsEnd.css';
+import '../styles/stepsEndPage.css';
+import Nav from '../components/Nav';
 import SuccessIcon from '../images&logos/success-svgrepo-com.svg';
 
-function StepsEnd() {
+function StepsEndPage() {
     return(
-        <div className="steps-end">
+        <div className="steps-end-page">
+            <Nav />
             <img className='watch-gif' src="https://i.pinimg.com/originals/c9/bd/7a/c9bd7a16beae0bd10b56eb511434b73c.gif" alt="" />
 
             <div className="success-container">
@@ -15,4 +17,4 @@ function StepsEnd() {
     )
 }
 
-export default StepsEnd;
+export default StepsEndPage;

@@ -1,5 +1,5 @@
-.steps-end {
-    height: 100%;
+.steps-end-page {
+    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;

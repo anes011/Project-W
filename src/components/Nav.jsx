@@ -91,6 +91,7 @@ function Nav() {
         localStorage.removeItem('userAccount');
         localStorage.setItem('signRoutes', 'true');
         redirect('/');
+        window.location.reload();
     };
 
     const handleOpenSearch = (e) => {

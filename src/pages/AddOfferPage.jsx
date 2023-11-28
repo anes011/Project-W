@@ -10,11 +10,13 @@ import Step8 from '../components/Step8';
 import Step9 from '../components/Step9';
 import Step10 from '../components/Step10';
 import Step11 from '../components/Step11';
-import StepsEnd from '../components/StepsEnd';
+import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useRef, useState } from 'react';
 import data from '../Context';
 
 function AddOfferPage() {
+
+    const redirect = useNavigate();
 
     const {placeType, spaceGiven, location, guests, bedrooms, beds, bathrooms, wifi, tv,
     washer, parking, airConditioning, pool, firstAidKit, fireDistinguisher, offerImages, title, 
@@ -132,8 +134,10 @@ function AddOfferPage() {
                                 body: formData
                             });
                             const data = await response.json();
+                            redirect('/steps-end');
                         } catch (err) {
                             console.error(err);
+                            alert(err);
                         }
                     };
 
@@ -195,7 +199,6 @@ function AddOfferPage() {
                 {steps === 9 && (<Step9 />)}
                 {steps === 10 && (<Step10 />)}
                 {steps === 11 && (<Step11 />)}
-                {steps === 12 && (<StepsEnd />)}
                 <div ref={progressBar} className={steps === 12 ? 'progress-bar-hide' : 'progress-bar'}></div>
             </div>
 

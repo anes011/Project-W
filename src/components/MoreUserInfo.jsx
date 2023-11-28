@@ -40,13 +40,18 @@ function MoreUserInfo() {
                                 body: formData
                             });
                             const data = await response.json();
-                            localStorage.setItem('userAccount', JSON.stringify(data.user));
-                            setRegisterLoading(true);
-                            
-                            setTimeout(() => {
-                                redirect('/');
-                                localStorage.setItem('signRoutes', 'false');
-                            }, 2000);
+                            if (data.Status === 'success') {
+                                localStorage.setItem('userAccount', JSON.stringify(data.user));
+                                setRegisterLoading(true);
+                                
+                                setTimeout(() => {
+                                    redirect('/');
+                                    localStorage.setItem('signRoutes', 'false');
+                                }, 2000);
+                            } else if (data.Status === 'failure') {
+                                const duplicateUsernameRegex = /\bduplicate\b/i;
+                                duplicateUsernameRegex.test(data.Error) ? alert('please change the username!') : alert('somthing went wrong!');
+                            }
                         } catch (err) {
                             console.error(err);
                         }
