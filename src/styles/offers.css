@@ -68,10 +68,11 @@
 .features-container {
     display: flex;
     margin: 16px 0;
+    min-width: 300px;
 }
 
 .features-container p {
-    padding-inline: 10px;
+    padding-inline: 7px;
     height: 15px;
     display: flex;
     justify-content: center;
