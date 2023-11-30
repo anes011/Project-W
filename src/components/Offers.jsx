@@ -7,8 +7,6 @@ import data from '../Context';
 
 function Offers() {
 
-    const {setOfferPressed} = useContext(data);
-
     const [apiData, setApiData] = useState([]);
 
     useEffect(() => {
@@ -29,7 +27,7 @@ function Offers() {
 
     const offerClicked = (_id) => {
         const clickedOffer = apiData.find((x) => x._id === _id);
-        setOfferPressed(clickedOffer);
+        localStorage.setItem('offerPressed', JSON.stringify(clickedOffer));
     }
 
     return(
@@ -60,7 +58,7 @@ function Offers() {
                         }
                     } else {
                         return (
-                            <Link to='/reservation' className='Link'>
+                            <Link onClick={() => offerClicked(x._id)} to='/reservation' className='Link'>
                                 <img className='house-img' src={`http://localhost:4000/${x.offerImages[0]}`} alt={x.offerImages[0]} />
 
                                 <div className="details-container">

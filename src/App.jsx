@@ -42,8 +42,6 @@ function App() {
   const [checkIn, setCheckIn] = useState(null);
   const [checkOut, setCheckOut] = useState(null);
 
-  const [offerPressed, setOfferPressed] = useState(null);
-
   const signRoutes = localStorage.getItem('signRoutes');
 
   return (
@@ -53,7 +51,7 @@ function App() {
     tv, setTv, washer, setWasher, parking, setParking, airConditioning, setAirConditioning,
     pool, setPool, firstAidKit, setFirstAidKit, fireDistinguisher, setFireDistinguisher, offerImages,
     setOfferImages, title, setTitle, description, setDescription, price, setPrice, checkIn,
-    setCheckIn, checkOut, setCheckOut, offerPressed, setOfferPressed }}>
+    setCheckIn, checkOut, setCheckOut }}>
         <div className="App">
           <Router>
             <Routes>

@@ -7,22 +7,32 @@ function ReservationPrice() {
 
     const redirect = useNavigate();
 
+    const offer = localStorage.getItem('offerPressed');
+
     return(
         <div className="reservation-price">
             <div className="price-table">
-                <p className='res-price'><span>$120</span>/night</p>
+                {
+                    offer !== null && (
+                        <p className='res-price'><span>${JSON.parse(offer).price}</span>/night</p>
+                    )
+                }
 
-                <div className="dates-container">
-                    <div className="check-in">
-                        <p>CHECK-IN</p>
-                        <p>11/02/2023</p>
-                    </div>
+                {
+                    offer !== null && (
+                        <div className="dates-container">
+                            <div className="check-in">
+                                <p>CHECK-IN</p>
+                                <p>{JSON.parse(offer).checkIn}</p>
+                            </div>
 
-                    <div className="check-out">
-                        <p>CHECK-OUT</p>
-                        <p>11/10/2023</p>
-                    </div>
-                </div>
+                            <div className="check-out">
+                                <p>CHECK-OUT</p>
+                                <p>{JSON.parse(offer).checkOut}</p>
+                            </div>
+                        </div>
+                    )
+                }
 
                 <button onClick={() => localStorage.getItem('userAccount') === null && redirect('/signing-page')} className="reserve-btn">
                     <p>Reserve</p>
