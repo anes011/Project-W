@@ -46,6 +46,15 @@
     color: #fff;
     border: none;
     cursor: pointer;
+    transition: all .3s ease;
+}
+
+.send-btn:hover {
+    background-color: rgba(197, 41, 155, 0.591);
+}
+
+.send-btn:active {
+    background-color: #000;
 }
 
 .comments-field {
