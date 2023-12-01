@@ -66,12 +66,23 @@ function ReservationComments() {
 
     return(
         <div className="reservation-comments">
-            <div className="add-comment">
-                <input onKeyDown={(e) => e.key === 'Enter' && sendComment()} ref={commentInput} type="text" placeholder='What do you think?' />
-                <button onClick={sendComment} className="send-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill='currentColor'><path d="m21.426 11.095-17-8A1 1 0 0 0 3.03 4.242l1.212 4.849L12 12l-7.758 2.909-1.212 4.849a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81z"></path></svg>
-                </button>
-            </div>
+            {
+                user !== null && offer !== null ? JSON.parse(user)._id !== JSON.parse(offer).hostID && (
+                    <div className="add-comment">
+                        <input onKeyDown={(e) => e.key === 'Enter' && sendComment()} ref={commentInput} type="text" placeholder='What do you think?' />
+                        <button onClick={sendComment} className="send-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill='currentColor'><path d="m21.426 11.095-17-8A1 1 0 0 0 3.03 4.242l1.212 4.849L12 12l-7.758 2.909-1.212 4.849a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81z"></path></svg>
+                        </button>
+                    </div>
+                ) : (
+                    <div className="add-comment">
+                        <input onKeyDown={(e) => e.key === 'Enter' && sendComment()} ref={commentInput} type="text" placeholder='What do you think?' />
+                        <button onClick={sendComment} className="send-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill='currentColor'><path d="m21.426 11.095-17-8A1 1 0 0 0 3.03 4.242l1.212 4.849L12 12l-7.758 2.909-1.212 4.849a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81z"></path></svg>
+                        </button>
+                    </div>
+                )
+            }
 
             <div className="comments-field">
                 {

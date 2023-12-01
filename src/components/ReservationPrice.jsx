@@ -8,6 +8,7 @@ function ReservationPrice() {
     const redirect = useNavigate();
 
     const offer = localStorage.getItem('offerPressed');
+    const user = localStorage.getItem('userAccount');
 
     return(
         <div className="reservation-price">
@@ -34,10 +35,19 @@ function ReservationPrice() {
                     )
                 }
 
-                <button onClick={() => localStorage.getItem('userAccount') === null && redirect('/signing-page')} className="reserve-btn">
-                    <p>Reserve</p>
-                    <img src={ReserveIcon} alt="" />
-                </button>
+                {
+                    user !== null && offer !== null ? JSON.parse(user)._id !== JSON.parse(offer).hostID && (
+                        <button onClick={() => user === null && redirect('/signing-page')} className="reserve-btn">
+                            <p>Reserve</p>
+                            <img src={ReserveIcon} alt="" />
+                        </button>
+                    ) : (
+                        <button onClick={() => user === null && redirect('/signing-page')} className="reserve-btn">
+                            <p>Reserve</p>
+                            <img src={ReserveIcon} alt="" />
+                        </button>
+                    )
+                }
             </div>
 
             <div className="payment-instructions">
