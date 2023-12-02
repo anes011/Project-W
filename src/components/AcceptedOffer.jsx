@@ -1,6 +1,27 @@
 import '../styles/acceptedOffer.css';
+import ReserveIcon from '../images&logos/calendar-checkmark-line-icon.svg';
+import { useEffect, useState } from 'react';
 
 function AcceptedOffer() {
+
+    const user = localStorage.getItem('userAccount');
+
+    const [apiData, setApiData] = useState([]);
+
+    useEffect(() => {
+        const acceptedReservationApi = async () => {
+            try {
+                const response = await fetch('http://localhost:4000/acceptedReservation');
+                const data = await response.json();
+                setApiData(data.acceptedReservations);
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        acceptedReservationApi();
+    }, []);
+
     return(
         <div className="accepted-offer">
             <div className="center-div">
@@ -9,6 +30,11 @@ function AcceptedOffer() {
                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
                     </svg>
                     <p>Host</p>
+                </div>
+
+                <div className="reservations">
+                    <img src={ReserveIcon} alt="" />
+                    <p>Reservations</p>
                 </div>
 
                 <div className="accepted-on">
@@ -34,16 +60,28 @@ function AcceptedOffer() {
                     <p>Phone Number</p>
                 </div>
 
-                <div className="host-profile">
-                    <img src="https://plus.unsplash.com/premium_photo-1664870883044-0d82e3d63d99?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" className="profile-photo" />
-                    <p>Host</p>
-                </div>
+                {
+                    user !== null && apiData.map((x) => {
+                        if (x.reservistID === JSON.parse(user)._id) {
+                            return(
+                                <>
+                                    <div className="host-profile">
+                                        <img src={`http://localhost:4000/${x.hostPhoto}`} alt={x.hostPhoto} className="profile-photo" />
+                                        <p>{x.hostName}</p>
+                                    </div>
 
-                <div className="accepted-on-date">02/05/2020</div>
+                                    <div className="reservation-title">{x.offerTitle}</div>
 
-                <div className="host-email">host@gmail.com</div>
+                                    <div className="accepted-on-date">{x.date}</div>
 
-                <div className="host-phone">0635884995</div>
+                                    <div className="host-email">{x.hostEmail}</div>
+
+                                    <div className="host-phone">{x.hostPhone}</div>
+                                </>
+                            )
+                        }
+                    })
+                }
             </div>
         </div>
     )

@@ -10,6 +10,42 @@ function ReservationPrice() {
     const offer = localStorage.getItem('offerPressed');
     const user = localStorage.getItem('userAccount');
 
+    const reserve = () => {
+        if (user === null) {
+            redirect('/signing-page');
+        } else {
+            if (offer !== null && user !== null) {
+                const reservationApi = async () => {
+                    try {
+                        const response = await fetch('http://localhost:4000/reservation', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                reservistID: JSON.parse(user)._id,
+                                hostID: JSON.parse(offer).hostID,
+                                reservistPhoto: JSON.parse(user).profilePhoto,
+                                reservistName: JSON.parse(user).userName,
+                                offerTitle: JSON.parse(offer).title,
+                                offerLocation: JSON.parse(offer).location,
+                                Status: 'Pending'
+                            })
+                        });
+                        const data = await response.json();
+                        alert('Reservation placed successfully!');
+                        redirect('/reservations-cart');
+                    } catch (err) {
+                        console.error(err);
+                        alert(err);
+                    }
+                };
+
+                reservationApi();
+            }
+        }
+    };
+
     return(
         <div className="reservation-price">
             <div className="price-table">
@@ -37,12 +73,12 @@ function ReservationPrice() {
 
                 {
                     user !== null && offer !== null ? JSON.parse(user)._id !== JSON.parse(offer).hostID && (
-                        <button onClick={() => user === null && redirect('/signing-page')} className="reserve-btn">
+                        <button onClick={reserve} className="reserve-btn">
                             <p>Reserve</p>
                             <img src={ReserveIcon} alt="" />
                         </button>
                     ) : (
-                        <button onClick={() => user === null && redirect('/signing-page')} className="reserve-btn">
+                        <button onClick={reserve} className="reserve-btn">
                             <p>Reserve</p>
                             <img src={ReserveIcon} alt="" />
                         </button>

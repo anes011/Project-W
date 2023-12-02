@@ -7,11 +7,22 @@
     width: 100%;
     max-width: 2000px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     border-radius: 20px;
     overflow: auto;
     background-color: rgb(197, 41, 155);
     color: #fff;
+}
+
+.center-div::-webkit-scrollbar {
+    height: 8px;
+    background-color: transparent;
+}
+
+.center-div::-webkit-scrollbar-thumb {
+    height: 100%;
+    background-color: #000;
+    border-radius: 30px;
 }
 
 .center-div div {

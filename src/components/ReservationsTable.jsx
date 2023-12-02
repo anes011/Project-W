@@ -2,9 +2,29 @@ import '../styles/reservationsTable.css';
 import ReserveIcon from '../images&logos/calendar-checkmark-line-icon.svg';
 import StatusIcon from '../images&logos/output-onlinepngtools.png';
 import SuccessIcon from '../images&logos/output-onlinepngtools (2).png';
+import { useEffect, useState } from 'react';
 
 
 function ReservationsTable() {
+
+    const [apiData, setApiData] = useState([]);
+
+    const user = localStorage.getItem('userAccount');
+
+    useEffect(() => {
+        const reservationApi = async () => {
+            try {
+                const response = await fetch('http://localhost:4000/reservation');
+                const data = await response.json();
+                setApiData(data.reservations);
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        reservationApi();
+    }, []);
+
     return(
         <div className="reservations-table">
             <div className="center-content">
@@ -35,15 +55,45 @@ function ReservationsTable() {
                 </div>
                 
                 
-                <p className="res-title">Lorem, ipsum dolor.</p>
-                <p className='res-date'>05/10/2023</p>
-                <p className='res-location'>Lorem, ipsum.</p>
-                <p className='res-status-pending'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
-                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
-                    </svg>
-                    Pending
-                </p>
+                
+                {
+                    user !== null && apiData.map((x) => {
+                        if (x.reservistID === JSON.parse(user)._id) {
+                            return(
+                                <>
+                                    <p className="res-title">{x.offerTitle}</p>
+                                    <p className='res-date'>{x.date}</p>
+                                    <p className='res-location'>{x.offerLocation}</p>
+                                    <p className='res-status-pending'>
+                                        {
+                                            x.Status === 'Pending' && (
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
+                                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                                                </svg>
+                                            )
+                                        }
+
+                                        {
+                                            x.Status === 'Succeeded' && (
+                                                <img src={SuccessIcon} alt="" />
+                                            )
+                                        }
+
+                                        {
+                                            x.Status === 'Rejected' && (
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                                                </svg>
+                                            )
+                                        }
+
+                                        {x.Status}
+                                    </p>
+                                </>
+                            )
+                        }
+                    })
+                }
 
                 <p className="res-title">Lorem, ipsum dolor.</p>
                 <p className='res-date'>05/10/2023</p>

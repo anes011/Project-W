@@ -1,6 +1,70 @@
 import '../styles/reservationsSubmitted.css';
+import ReserveIcon from '../images&logos/calendar-checkmark-line-icon.svg';
+import { useEffect, useState } from 'react';
 
 function ReservationsSubmitted() {
+
+    const [apiData, setApiData] = useState([]);
+
+    const user = localStorage.getItem('userAccount');
+
+    useEffect(() => {
+        const reservationApi = async () => {
+            try {
+                const response = await fetch('http://localhost:4000/reservation');
+                const data = await response.json();
+                setApiData(data.reservations);
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        reservationApi();
+    }, []);
+
+    const acceptReservation = (_id) => {
+        const target = apiData.find((x) => x._id === _id);
+
+        const deleteReservationApi = async () => {
+            try {
+                const response = await fetch(`http://localhost:4000/reservation/${target._id}`, {
+                    method: 'DELETE'
+                });
+                const data = await response.json();
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        if (user !== null) {
+            const acceptReservationApi = async () => {
+                try {
+                    const response = await fetch('http://localhost:4000/acceptedReservation', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            reservistID: target.reservistID,
+                            offerTitle: target.offerTitle,
+                            hostPhoto: JSON.parse(user).profilePhoto,
+                            hostName: JSON.parse(user).userName,
+                            hostEmail: JSON.parse(user).email,
+                            hostPhone: JSON.parse(user).phoneNumber
+                        })
+                    });
+                    const data = await response.json();
+                    deleteReservationApi();
+                    window.location.reload();
+                } catch (err) {
+                    console.error(err);
+                }
+            };
+
+            acceptReservationApi();
+        }
+    };
+
     return(
         <div className="reservations-submitted">
             <div className="center-container">
@@ -9,6 +73,11 @@ function ReservationsSubmitted() {
                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
                     </svg>
                     <p>Person reserved</p>
+                </div>
+
+                <div className="reservations">
+                    <img src={ReserveIcon} alt="" />
+                    <p>Reservations</p>
                 </div>
 
                 <div className="reservation-date">
@@ -29,19 +98,33 @@ function ReservationsSubmitted() {
 
 
 
-                <div className="person">
-                    <img src="https://plus.unsplash.com/premium_photo-1664870883044-0d82e3d63d99?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" className="profile-photo" />
-                    <p>Lorem, ipsum.</p>
-                </div>
+                {
+                    user !== null && apiData.map((x) => {
+                        if (x.hostID === JSON.parse(user)._id) {
+                            return(
+                                <>
+                                    <div className="person">
+                                        <img src={`http://localhost:4000/${x.reservistPhoto}`} alt={x.reservistPhoto} className="profile-photo" />
+                                        <p>{x.reservistName}</p>
+                                    </div>
 
-                <div className="res-date">
-                    <p>07/04/2021</p>
-                </div>
+                                    <div className="res-title">
+                                        <p>{x.offerTitle}</p>
+                                    </div>
 
-                <div className="decision-btns">
-                    <button className="accept">Accept</button>
-                    <button className="reject">Reject</button>
-                </div>
+                                    <div className="res-date">
+                                        <p>{x.date}</p>
+                                    </div>
+
+                                    <div className="decision-btns">
+                                        <button onClick={() => acceptReservation(x._id)} className="accept">Accept</button>
+                                        <button className="reject">Reject</button>
+                                    </div>
+                                </>
+                            )
+                        }
+                    })
+                }
             </div>
         </div>
     )
