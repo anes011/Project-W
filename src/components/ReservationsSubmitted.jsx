@@ -65,6 +65,24 @@ function ReservationsSubmitted() {
         }
     };
 
+    const rejectReservation = (_id) => {
+        const target = apiData.find((x) => x._id === _id);
+
+        const deleteReservationApi = async () => {
+            try {
+                const response = await fetch(`http://localhost:4000/reservation/${target._id}`, {
+                    method: 'DELETE'
+                });
+                const data = await response.json();
+                window.location.reload();
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        deleteReservationApi();
+    };
+
     return(
         <div className="reservations-submitted">
             <div className="center-container">
@@ -118,7 +136,7 @@ function ReservationsSubmitted() {
 
                                     <div className="decision-btns">
                                         <button onClick={() => acceptReservation(x._id)} className="accept">Accept</button>
-                                        <button className="reject">Reject</button>
+                                        <button onClick={() => rejectReservation(x._id)} className="reject">Delete</button>
                                     </div>
                                 </>
                             )
