@@ -83,6 +83,30 @@ function ReservationsSubmitted() {
         deleteReservationApi();
     };
 
+    const markAsSeen = (_id) => {
+        const target = apiData.find((x) => x._id === _id);
+
+        const notificationApi = async () => {
+            try {
+                const response = await fetch(`http://localhost:4000/reservation/${target._id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        new: false
+                    })
+                });
+                const data = await response.json();
+                window.location.reload();
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        notificationApi();
+    };
+
     return(
         <div className="reservations-submitted">
             <div className="center-container">
@@ -122,6 +146,11 @@ function ReservationsSubmitted() {
                             return(
                                 <>
                                     <div className="person">
+                                        {
+                                            x.new && (
+                                                <button onClick={() => markAsSeen(x._id)} className='notification'></button>
+                                            )
+                                        }
                                         <img src={`http://localhost:4000/${x.reservistPhoto}`} alt={x.reservistPhoto} className="profile-photo" />
                                         <p>{x.reservistName}</p>
                                     </div>
@@ -131,7 +160,7 @@ function ReservationsSubmitted() {
                                     </div>
 
                                     <div className="res-date">
-                                        <p>{x.date}</p>
+                                        <p>{`${x.date.slice(0, 4)} / ${x.date.slice(5, 7)} / ${x.date.slice(8, 10)}`}</p>
                                     </div>
 
                                     <div className="decision-btns">

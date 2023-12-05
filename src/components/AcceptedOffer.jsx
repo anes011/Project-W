@@ -1,6 +1,7 @@
 import '../styles/acceptedOffer.css';
 import ReserveIcon from '../images&logos/calendar-checkmark-line-icon.svg';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import data from '../Context';
 
 function AcceptedOffer() {
 
@@ -21,6 +22,48 @@ function AcceptedOffer() {
 
         acceptedReservationApi();
     }, []);
+
+    const markAsSeen = (_id) => {
+        const target = apiData.find((x) => x._id === _id);
+
+        const notificationApi = async () => {
+            try {
+                const response = await fetch(`http://localhost:4000/acceptedReservation/${target._id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        new: false
+                    })
+                });
+                const data = await response.json();
+                window.location.reload();
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        notificationApi();
+    };
+
+    const handleDelete = (_id) => {
+        const target = apiData.find((x) => x._id === _id);
+
+        const deleteApi = async () => {
+            try {
+                const response = await fetch(`http://localhost:4000/acceptedReservation/${target._id}`, {
+                    method: 'DELETE'
+                });
+                const data = await response.json();
+                window.location.reload();
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        deleteApi();
+    };
 
     return(
         <div className="accepted-offer">
@@ -66,13 +109,23 @@ function AcceptedOffer() {
                             return(
                                 <>
                                     <div className="host-profile">
+                                        {
+                                            x.new && (
+                                                <button onClick={() => markAsSeen(x._id)} className='notification'></button>
+                                            )
+                                        }
+                                        <button onClick={() => handleDelete(x._id)} className='delete-btn'>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+                                            </svg>
+                                        </button>
                                         <img src={`http://localhost:4000/${x.hostPhoto}`} alt={x.hostPhoto} className="profile-photo" />
                                         <p>{x.hostName}</p>
                                     </div>
 
                                     <div className="reservation-title">{x.offerTitle}</div>
 
-                                    <div className="accepted-on-date">{x.date}</div>
+                                    <div className="accepted-on-date">{`${x.date.slice(0, 4)} / ${x.date.slice(5, 7)} / ${x.date.slice(8, 10)}`}</div>
 
                                     <div className="host-email">{x.hostEmail}</div>
 

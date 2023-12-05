@@ -32,6 +32,7 @@
     gap: 2rem;
     height: 50px;
     min-width: 300px;
+    position: relative;
 }
 
 .center-div div svg {
@@ -43,4 +44,26 @@
     width: 40px;
     border-radius: 50%;
     object-fit: cover;
+}
+
+
+.notification {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: red;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    left: 30px;
+}
+
+.delete-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }

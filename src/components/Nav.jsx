@@ -8,6 +8,8 @@ function Nav() {
 
     const redirect = useNavigate();
 
+    const user = localStorage.getItem('userAccount');
+
     const menuBtn = useRef(null);
     const menuDropDown = useRef(null);
     const nav = useRef(null);
@@ -21,6 +23,64 @@ function Nav() {
     const [profilePhoto, setProfilePhoto] = useState(null);
     const [userName, setUserName] = useState(null);
     const [openSearch, setOpenSearch] = useState(false);
+
+    /*Notification code*/
+    const [apiDataAccepted, setApiDataAccepted] = useState([]);
+    const [apiDataRes, setApiDataRes] = useState([]);
+    const [notificationIndicator, setNotificationIndicator] = useState(false);
+    const [acceptedResIndicator, setAcceptedResIndicator] = useState(false);
+    const [notificationIndicatorRes, setNotificationIndicatorRes] = useState(false);
+
+    useEffect(() => {
+        const acceptedReservationApi = async () => {
+            try {
+                const response = await fetch('http://localhost:4000/acceptedReservation');
+                const data = await response.json();
+                setApiDataAccepted(data.acceptedReservations);
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        acceptedReservationApi();
+    }, []);
+
+    useEffect(() => {
+        user !== null && apiDataAccepted.map((x) => {
+            if (x.reservistID === JSON.parse(user)._id) {
+                if (x.new) {
+                    setNotificationIndicator(true);
+                    setAcceptedResIndicator(true);
+                };
+            }
+        })
+    });
+
+    useEffect(() => {
+        const reservationApi = async () => {
+            try {
+                const response = await fetch('http://localhost:4000/reservation');
+                const data = await response.json();
+                setApiDataRes(data.reservations);
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        reservationApi();
+    }, []);
+
+    useEffect(() => {
+        user !== null && apiDataRes.map((x) => {
+            if (x.hostID === JSON.parse(user)._id) {
+                if (x.new) {
+                    setNotificationIndicator(true);
+                    setNotificationIndicatorRes(true);
+                }
+            }
+        })
+    });
+    /*end of notification code*/
 
     const handleMenuDropDown = (e) => {
         e.stopPropagation();
@@ -78,8 +138,6 @@ function Nav() {
         responsiveNav();
     });
 
-    const user = localStorage.getItem('userAccount');
-
     useEffect(() => {
         if (user !== null) {
             setProfilePhoto(JSON.parse(user).profilePhoto);
@@ -105,6 +163,11 @@ function Nav() {
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
                     <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
                 </svg>
+                {
+                    notificationIndicator && (
+                        <div className="notification-dot"></div>
+                    )
+                }
             </button>
 
             {
@@ -138,6 +201,11 @@ function Nav() {
                                             <path d="M2 10h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1zm9-9h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm0 9a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-3zm0-10a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-3zM2 9a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H2zm7 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2v-3zM0 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.354.854a.5.5 0 1 0-.708-.708L3 3.793l-.646-.647a.5.5 0 1 0-.708.708l1 1a.5.5 0 0 0 .708 0l2-2z"/>
                                         </svg>
                                         <p>Accepted reservations</p>
+                                        {
+                                            acceptedResIndicator && (
+                                                <div className="notification-dot-accepted"></div>
+                                            )
+                                        }
                                     </div>
                                 </Link>
                             )
@@ -179,6 +247,11 @@ function Nav() {
                                             <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
                                         </svg>
                                         <p>Received reservations</p>
+                                        {
+                                            notificationIndicatorRes && (
+                                                <div className="notification-dot-received"></div>
+                                            )
+                                        }
                                     </div>
                                 </Link>
                             )
