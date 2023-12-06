@@ -157,6 +157,26 @@ function Nav() {
         setOpenSearch(!openSearch);
     };
 
+    const handleSearch = (e) => {
+        if (e.key === 'Enter') {
+            const searchApi = async () => {
+                try {
+                    const response = await fetch(`http://localhost:4000/addOffer/search?q=${searchInput.current.value}`);
+                    const data = await response.json();
+                    localStorage.setItem('search', JSON.stringify(data.result));
+                    redirect('/search');
+                    window.location.reload();
+                } catch (err) {
+                    console.error(err);
+                }
+            };
+
+            if (searchInput.current.value !== '') {
+                searchApi();
+            }
+        }
+    };
+
     return(
         <div ref={nav} className="nav">
             <button ref={menuBtn} onClick={handleMenuDropDown} className="menu">
@@ -315,7 +335,7 @@ function Nav() {
 
                 {
                     openSearch && (
-                        <input onClick={(e) => e.stopPropagation()} ref={searchInput} type="text" className="search-bar" placeholder='Do you have somthing in mind?' />
+                        <input onKeyDown={handleSearch} onClick={(e) => e.stopPropagation()} ref={searchInput} type="text" className="search-bar" placeholder='Do you have somthing in mind?' />
                     )
                 }
             </div>

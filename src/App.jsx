@@ -10,6 +10,7 @@ import MyOffersPage from './pages/MyOffersPage';
 import AcceptedOffersPage from './pages/AcceptedOffersPage';
 import ProfilePage from './pages/ProfilePage';
 import StepsEndPage from './pages/StepsEndPage';
+import SearchPage from './pages/SearchPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import data from './Context';
 import { useState } from 'react';
@@ -66,6 +67,7 @@ function App() {
               <Route path='/accepted-offers' element={<AcceptedOffersPage />} />
               <Route path='/profile-page' element={<ProfilePage />} />
               <Route path='/steps-end' element={<StepsEndPage />} />
+              <Route path='/search' element={<SearchPage />} />
             </Routes>
           </Router>
         </div>
