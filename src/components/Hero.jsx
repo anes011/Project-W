@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import '../styles/hero.css';
+import { getTranslation } from '../translations/translationService';
 
 function Hero() {
 
@@ -26,7 +27,7 @@ function Hero() {
 
     return(
         <div className="hero">
-            <h1 className='hero-text'>Book your best <span className='places'>Places</span></h1>
+            <h1 className='hero-text'>{getTranslation(localStorage.getItem('language'), 'heroText part-1')} <span className='places'>{getTranslation(localStorage.getItem('language'), 'heroText part-2')}</span></h1>
             <div className="slide-container">
                 <div ref={imageContainer} className="image-container">
                     <img className='model' src="https://foyr.com/learn/wp-content/uploads/2022/05/family-room-in-a-house-1024x683.jpg" alt="" />

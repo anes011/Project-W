@@ -10,8 +10,8 @@ function Step10() {
 
     return(
         <div className="step-10">
-            <h1>Now, set your price</h1>
-            <p>You can change it anytime.</p>
+            <h1>Choose a price that suits you!</h1>
+            <p>please note that the price is by /night, not month!</p>
 
             <div className="price-container">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-exchange" viewBox="0 0 16 16">

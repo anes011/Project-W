@@ -26,7 +26,6 @@ function SearchPage() {
                             <img className='offer-img' src={`http://localhost:4000/${x.offerImages[0]}`} alt={x.offerImages[0]} />
                             <img className='offer-img' src={`http://localhost:4000/${x.offerImages[1]}`} alt={x.offerImages[1]} />
                             <img className='offer-img' src={`http://localhost:4000/${x.offerImages[2]}`} alt={x.offerImages[2]} />
-                            <img className='offer-img' src={`http://localhost:4000/${x.offerImages[3]}`} alt={x.offerImages[3]} />
                         </div>
 
                         <div className="details">
@@ -50,6 +49,26 @@ function SearchPage() {
                     <img className='offer-img' src={HouseImg} alt="" />
                     <img className='offer-img' src={HouseImg} alt="" />
                     <img className='offer-img' src={HouseImg} alt="" />
+                </div>
+
+                <div className="details">
+                    <div className="title-stars-container">
+                        <p>Lorem ipsum</p>
+                        <img className='stars' src={StarsIcon} alt="" />
+                    </div>
+                    <p className='price'><span>$120</span>/night</p>
+                    <div className="features-container">
+                        <p>1 Bed</p>
+                        <p>Kitchen</p>
+                        <p className='last-feature'>Living room</p>
+                    </div>
+                    <button>Book now</button>
+                </div>
+            </Link>
+            <Link to='/reservation' className='offer-container'>
+                <div className="images-grid">
+                    <img className='offer-img' src={HouseImg} alt="" />
+                    <img className='offer-img' src={HouseImg} alt="" />
                     <img className='offer-img' src={HouseImg} alt="" />
                 </div>
 
@@ -72,6 +91,26 @@ function SearchPage() {
                     <img className='offer-img' src={HouseImg} alt="" />
                     <img className='offer-img' src={HouseImg} alt="" />
                     <img className='offer-img' src={HouseImg} alt="" />
+                </div>
+
+                <div className="details">
+                    <div className="title-stars-container">
+                        <p>Lorem ipsum</p>
+                        <img className='stars' src={StarsIcon} alt="" />
+                    </div>
+                    <p className='price'><span>$120</span>/night</p>
+                    <div className="features-container">
+                        <p>1 Bed</p>
+                        <p>Kitchen</p>
+                        <p className='last-feature'>Living room</p>
+                    </div>
+                    <button>Book now</button>
+                </div>
+            </Link>
+            <Link to='/reservation' className='offer-container'>
+                <div className="images-grid">
+                    <img className='offer-img' src={HouseImg} alt="" />
+                    <img className='offer-img' src={HouseImg} alt="" />
                     <img className='offer-img' src={HouseImg} alt="" />
                 </div>
 
@@ -94,7 +133,6 @@ function SearchPage() {
                     <img className='offer-img' src={HouseImg} alt="" />
                     <img className='offer-img' src={HouseImg} alt="" />
                     <img className='offer-img' src={HouseImg} alt="" />
-                    <img className='offer-img' src={HouseImg} alt="" />
                 </div>
 
                 <div className="details">
@@ -113,7 +151,6 @@ function SearchPage() {
             </Link>
             <Link to='/reservation' className='offer-container'>
                 <div className="images-grid">
-                    <img className='offer-img' src={HouseImg} alt="" />
                     <img className='offer-img' src={HouseImg} alt="" />
                     <img className='offer-img' src={HouseImg} alt="" />
                     <img className='offer-img' src={HouseImg} alt="" />

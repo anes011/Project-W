@@ -18,18 +18,27 @@
 .accommodation-btns button {
     height: 170px;
     width: 250px;
-    border-radius: 5px;
+    border-radius: 20px;
     border: 1px solid;
     cursor: pointer;
     background-color: #fff;
+    position: relative;
+}
+
+.accommodation-btns button p {
+    margin-top: 6rem;
+    font-size: 1.2rem;
 }
 
 .accommodation-btns button:focus {
     border: 3px solid rgb(197, 41, 155);
 }
 
-.accommodation-btns img {
-    height: 50%;
+.accommodation-btns svg {
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(5);
 }
 
 @media (max-width: 581px) {

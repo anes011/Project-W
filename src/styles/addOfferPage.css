@@ -12,6 +12,7 @@
     display: flex;
     justify-content: center;
     position: relative;
+    overflow: hidden;
 }
 
 .progress-bar {
@@ -55,8 +56,4 @@
 .back-btn {
     background-color: #000;
     color: #fff;
-}
-
-@media (min-width: 1710px) {
-    
 }

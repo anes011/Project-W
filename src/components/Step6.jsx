@@ -10,7 +10,7 @@ function Step6() {
 
     return(
         <div className="step-6">
-            <h1>Tell guests what your place has to offer</h1>
+            <h1>Do you have any of these amenities?</h1>
 
             <div className="amenities-container">
                 <button onClick={() => setWifi(!wifi)} className={wifi ? 'wifi-btn amen-btn-active' : 'wifi-btn amen-btn'}>

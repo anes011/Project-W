@@ -177,6 +177,16 @@ function Nav() {
         }
     };
 
+    const setLanguageToArabic = () => {
+        localStorage.setItem('language', 'ar');
+        window.location.reload();
+    };
+
+    const setLanguageToEnglish = () => {
+        localStorage.setItem('language', 'en');
+        window.location.reload();
+    };
+
     return(
         <div ref={nav} className="nav">
             <button ref={menuBtn} onClick={handleMenuDropDown} className="menu">
@@ -300,8 +310,8 @@ function Nav() {
                         {
                             languageClicked && (
                                 <div onClick={() => setLanguageClicked(false)} className='language-dropdown'>
-                                    <p>العربية</p>
-                                    <p>English</p>
+                                    <p onClick={setLanguageToArabic}>العربية</p>
+                                    <p onClick={setLanguageToEnglish}>English</p>
                                 </div>
                             )
                         }

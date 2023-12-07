@@ -68,8 +68,7 @@ function Step5() {
 
     return(
         <div className="step-5">
-            <h1>Share some basics about your place</h1>
-            <p>You'll add more details later, like bed types.</p>
+            <h1>What does your place offer?</h1>
 
             <div className="guests-container">
                 <p>Guests</p>

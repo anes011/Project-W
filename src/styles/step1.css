@@ -1,27 +1,27 @@
 .step-1 {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5rem;
     height: 100%;
     width: 100%;
 }
 
 .step-1 p {
-    width: 30%;
+    width: 50%;
     min-width: 300px;
 }
 
 .step-1 p span {
     font-size: 3rem;
     font-weight: 800;
+    color: rgb(197, 41, 155);
 }
 
 .step-1 img {
     height: 300px;
-    width: 300px;
-    object-fit: cover;
-    border-radius: 50%;
+    transform: scale(2);
+    z-index: -1;
 }
 
 @media (max-width: 899px) {

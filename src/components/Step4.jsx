@@ -10,8 +10,7 @@ function Step4() {
 
     return(
         <div className="step-4">
-            <h1>Where's your place located?</h1>
-            <p>Your address is only shared with guests after they’ve made a reservation.</p>
+            <h1>Provide your place's location below:</h1>
 
             <div className="address-input">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">

@@ -90,7 +90,7 @@ function AddOfferPage() {
         if (steps === 11) {
             if (price === null) {
                 setSteps(10);
-                alert('please enter a valid price');
+                alert('please enter a valid price, and without letters!');
             }
         };
 

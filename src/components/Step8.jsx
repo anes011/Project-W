@@ -10,8 +10,8 @@ function Step8() {
 
     return(
         <div className="step-8">
-            <h1>Now, let's give your house a title</h1>
-            <p>Short titles work best. Have fun with it—you can always change it later.</p>
+            <h1>Provide a short title for your place</h1>
+            <p>please don't write a long description, because the next step will be the description</p>
 
             <textarea onChange={(e) => titleRegex.test(e.target.value) ? setTitle(e.target.value) : setTitle(null)} className='text-area' name="" id=""></textarea>
         </div>
