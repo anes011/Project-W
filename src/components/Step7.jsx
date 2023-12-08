@@ -2,6 +2,7 @@ import '../styles/step7.css';
 import data from '../Context';
 import { useContext, useEffect, useState } from 'react';
 import villa3D from '../images&logos/modern-residential-district-with-green-roof-balcony-generated-by-ai.jpg';
+import { getTranslation } from '../translations/translationService';
 
 function Step7() {
 
@@ -9,7 +10,7 @@ function Step7() {
 
     return(
         <div className="step-7">
-            <h1>Add photos of your place</h1>
+            <h1>{getTranslation(localStorage.getItem('language'), 'addOffer step-7 photo')}</h1>
 
             <label className='upload-photo-container' htmlFor="file-input">
                 {

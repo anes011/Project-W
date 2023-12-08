@@ -1,6 +1,7 @@
 import '../styles/stepsEndPage.css';
 import Nav from '../components/Nav';
 import SuccessIcon from '../images&logos/success-svgrepo-com.svg';
+import { getTranslation } from '../translations/translationService';
 
 function StepsEndPage() {
     return(
@@ -10,8 +11,8 @@ function StepsEndPage() {
 
             <div className="success-container">
                 <img src={SuccessIcon} alt="" />
-                <p>Your offer has been created successfully!</p>
-                <p>Give it some time untill people can see your offer</p>
+                <p>{getTranslation(localStorage.getItem('language'), 'addOffer finalStep part-1')}</p>
+                <p>{getTranslation(localStorage.getItem('language'), 'addOffer finalStep part-2')}</p>
             </div>
         </div>
     )

@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import '../styles/step5.css';
 import data from '../Context';
+import { getTranslation } from '../translations/translationService';
 
 function Step5() {
 
@@ -68,10 +69,10 @@ function Step5() {
 
     return(
         <div className="step-5">
-            <h1>What does your place offer?</h1>
+            <h1>{getTranslation(localStorage.getItem('language'), 'addOffer step-5 offerings')}</h1>
 
             <div className="guests-container">
-                <p>Guests</p>
+                <p>{getTranslation(localStorage.getItem('language'), 'addOffer step-5 guests')}</p>
 
                 <div className="minus-plus-container">
                     <button onClick={handleGuestsMinus} className="minus-btn">
@@ -89,7 +90,7 @@ function Step5() {
             </div>
 
             <div className="bedrooms-container">
-                <p>Bedrooms</p>
+                <p>{getTranslation(localStorage.getItem('language'), 'addOffer step-5 bedrooms')}</p>
 
                 <div className="minus-plus-container">
                     <button onClick={handleBedroomsMinus} className="minus-btn">
@@ -107,7 +108,7 @@ function Step5() {
             </div>
 
             <div className="beds-container">
-                <p>Beds</p>
+                <p>{getTranslation(localStorage.getItem('language'), 'addOffer step-5 beds')}</p>
 
                 <div className="minus-plus-container">
                     <button onClick={handleBedsMinus} className="minus-btn">
@@ -125,7 +126,7 @@ function Step5() {
             </div>
 
             <div className="bathrooms-container">
-                <p>Bathrooms</p>
+                <p>{getTranslation(localStorage.getItem('language'), 'addOffer step-5 bathrooms')}</p>
 
                 <div className="minus-plus-container">
                     <button onClick={handleBathroomsMinus} className="minus-btn">

@@ -2,6 +2,7 @@ import '../styles/reservationPrice.css';
 import ReserveIcon from '../images&logos/calendar-checkmark-line-icon.svg';
 import PaymentIcon from '../images&logos/face-to-face-payment-2-512.png';
 import { useNavigate } from 'react-router-dom';
+import { getTranslation } from '../translations/translationService';
 
 function ReservationPrice() {
 
@@ -51,7 +52,7 @@ function ReservationPrice() {
             <div className="price-table">
                 {
                     offer !== null && (
-                        <p className='res-price'><span>${JSON.parse(offer).price}</span>/night</p>
+                        <p className='res-price'><span>${JSON.parse(offer).price}</span>/{getTranslation(localStorage.getItem('language'), 'price')}</p>
                     )
                 }
 
@@ -59,12 +60,12 @@ function ReservationPrice() {
                     offer !== null && (
                         <div className="dates-container">
                             <div className="check-in">
-                                <p>CHECK-IN</p>
+                                <p>{getTranslation(localStorage.getItem('language'), 'addOffer step-11 check-in')}</p>
                                 <p>{JSON.parse(offer).checkIn}</p>
                             </div>
 
                             <div className="check-out">
-                                <p>CHECK-OUT</p>
+                                <p>{getTranslation(localStorage.getItem('language'), 'addOffer step-11 check-out')}</p>
                                 <p>{JSON.parse(offer).checkOut}</p>
                             </div>
                         </div>
@@ -74,12 +75,12 @@ function ReservationPrice() {
                 {
                     user !== null && offer !== null ? JSON.parse(user)._id !== JSON.parse(offer).hostID && (
                         <button onClick={reserve} className="reserve-btn">
-                            <p>Reserve</p>
+                            <p>{getTranslation(localStorage.getItem('language'), 'reserve')}</p>
                             <img src={ReserveIcon} alt="" />
                         </button>
                     ) : (
                         <button onClick={reserve} className="reserve-btn">
-                            <p>Reserve</p>
+                            <p>{getTranslation(localStorage.getItem('language'), 'reserve')}</p>
                             <img src={ReserveIcon} alt="" />
                         </button>
                     )

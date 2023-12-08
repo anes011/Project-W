@@ -13,6 +13,7 @@ import Step11 from '../components/Step11';
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useRef, useState } from 'react';
 import data from '../Context';
+import { getTranslation } from '../translations/translationService';
 
 function AddOfferPage() {
 
@@ -203,8 +204,8 @@ function AddOfferPage() {
             </div>
 
             <div className="back-next-container">
-                <button onClick={handleStepsMinus} className="back-btn">Back</button>
-                <button onClick={handleStepsPlus} className="next-btn">Next</button>
+                <button onClick={handleStepsMinus} className="back-btn">{getTranslation(localStorage.getItem('language'), 'addOffer back-btn')}</button>
+                <button onClick={handleStepsPlus} className="next-btn">{getTranslation(localStorage.getItem('language'), 'addOffer next-btn')}</button>
             </div>
         </div>
     )

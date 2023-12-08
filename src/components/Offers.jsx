@@ -4,6 +4,7 @@ import StarsIcon from '../images&logos/five_star_rating.svg';
 import { Link } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import data from '../Context';
+import { getTranslation } from '../translations/translationService';
 
 function Offers() {
 
@@ -45,13 +46,13 @@ function Offers() {
                                             <p>{x.title}</p>
                                             <img className='stars' src={StarsIcon} alt="" />
                                         </div>
-                                        <p className='price'><span>{x.price}</span>/night</p>
+                                        <p className='price'><span>{x.price}</span>DA /{getTranslation(localStorage.getItem('language'), 'price')}</p>
                                         <div className="features-container">
-                                            <p>{`${x.bathrooms} Bathrooms`}</p>
-                                            <p>{`${x.beds} Beds`}</p>
-                                            <p className='last-feature'>{`${x.bedrooms} Bedrooms`}</p>
+                                            <p>{`${x.bathrooms} ${getTranslation(localStorage.getItem('language'), 'mainPage offer feature-1')}`}</p>
+                                            <p>{`${x.beds} ${getTranslation(localStorage.getItem('language'), 'mainPage offer feature-2')}`}</p>
+                                            <p className='last-feature'>{`${x.bedrooms} ${getTranslation(localStorage.getItem('language'), 'mainPage offer feature-3')}`}</p>
                                         </div>
-                                        <button>Book now</button>
+                                        <button>{getTranslation(localStorage.getItem('language'), 'mainPage offer button')}</button>
                                     </div>
                                 </Link>
                             )
