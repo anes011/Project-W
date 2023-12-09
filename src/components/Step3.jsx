@@ -11,7 +11,7 @@ function Step3() {
         <div className="step-3">
             <h1>{getTranslation(localStorage.getItem('language'), 'addOffer step-3 spaceGiven')}</h1>
 
-            <button onClick={() => setSpaceGiven(getTranslation(localStorage.getItem('language'), 'addOffer step-3 entirePlace'))} className="entire-house-btn">
+            <button onClick={() => setSpaceGiven('entirePlace')} className="entire-house-btn">
                 <div className="description-container">
                     <p>{getTranslation(localStorage.getItem('language'), 'addOffer step-3 entirePlace')}</p>
                 </div>
@@ -21,7 +21,7 @@ function Step3() {
                 </svg>
             </button>
 
-            <button onClick={() => setSpaceGiven(getTranslation(localStorage.getItem('language'), 'addOffer step-3 room'))} className="room-btn">
+            <button onClick={() => setSpaceGiven('room')} className="room-btn">
                 <div className="description-container">
                     <p>{getTranslation(localStorage.getItem('language'), 'addOffer step-3 room')}</p>
                 </div>
@@ -30,7 +30,7 @@ function Step3() {
                 </svg>
             </button>
 
-            <button onClick={() => setSpaceGiven(getTranslation(localStorage.getItem('language'), 'addOffer step-3 sharedRoom'))} className="shared-room-btn">
+            <button onClick={() => setSpaceGiven('sharedRoom')} className="shared-room-btn">
                 <div className="description-container">
                     <p>{getTranslation(localStorage.getItem('language'), 'addOffer step-3 sharedRoom')}</p>
                 </div>

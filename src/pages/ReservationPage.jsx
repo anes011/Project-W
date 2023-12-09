@@ -4,6 +4,7 @@ import ReservationSlider from '../components/ReservationSlider';
 import ReservationDetails from '../components/ReservationDetails';
 import ReservationPrice from '../components/ReservationPrice';
 import ReservationComments from '../components/ReservationComments';
+import Footer from '../components/Footer';
 
 function ReservationPage() {
     return(
@@ -15,6 +16,7 @@ function ReservationPage() {
                 <ReservationPrice />
             </div>
             <ReservationComments />
+            <Footer />
         </div>
     )
 }

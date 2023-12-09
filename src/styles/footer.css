@@ -1,0 +1,69 @@
+.footer {
+    border-top: 2px solid #a4a4a4;
+    width: 100%;
+    padding: 3rem 7rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    position: relative;
+}
+
+.contact-btns {
+    display: flex;
+    gap: 1rem;
+}
+
+.contact-btns button {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.contact-btns button:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.email-section {
+    margin-top: 1rem;
+}
+
+.email-section div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.product-section p:nth-of-type(1),
+.company-section p:nth-of-type(1),
+.resources-section p:nth-of-type(1) {
+    color: #797979;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.links-container {
+    display: flex;
+    gap: 10rem;
+    font-weight: 800;
+}
+
+.copy-rights {
+    position: absolute;
+    bottom: 0;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.copy-rights p:nth-of-type(1) {
+    font-size: 1.5rem;
+}

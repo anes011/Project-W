@@ -62,7 +62,7 @@ function ReservationsTable() {
                             return(
                                 <>
                                     <p className="res-title">{x.offerTitle}</p>
-                                    <p className='res-date'>{x.date}</p>
+                                    <p className='res-date'>{`${x.date.slice(0, 4)} / ${x.date.slice(5, 7)} / ${x.date.slice(8, 10)}`}</p>
                                     <p className='res-location'>{x.offerLocation}</p>
                                     <p className='res-status-pending'>
                                         {
