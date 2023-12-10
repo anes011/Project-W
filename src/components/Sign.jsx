@@ -4,6 +4,7 @@ import Show from '../images&logos/show-solid-24.png';
 import Hide from '../images&logos/hide-solid-24.png';
 import { useContext, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getTranslation } from '../translations/translationService';
 import data from '../Context';
 
 function Sign() {
@@ -111,8 +112,8 @@ function Sign() {
             <img src={SignBackground} alt="Sign background" className={signIn ? 'background-image-active' : 'background-image'} />
             <div className={signIn ? 'right-side-active' : 'right-side'}>
                 <div className='signup-signin-container'>
-                    <h1 onClick={moveToSignIn} className='sign-in'>SIGN IN</h1>
-                    <h1 onClick={moveToSignUp} className='sign-up'>SIGN UP</h1>
+                    <h1 onClick={moveToSignIn} className='sign-in'>{getTranslation(localStorage.getItem('language'), 'sign-in')}</h1>
+                    <h1 onClick={moveToSignUp} className='sign-up'>{getTranslation(localStorage.getItem('language'), 'sign-up')}</h1>
                     <div className={signIn ? 'bottom-outline-active' : 'bottom-outline'}></div>
                 </div>
 
@@ -120,12 +121,12 @@ function Sign() {
                     signIn ? (
                         <div className="sign-in-container">
                             <div onClick={handleInputActiveEmail} className="email-container">
-                                <p className={inputActiveEmail ? 'email-p-active' : 'email-p'}>Email:</p>
+                                <p className={inputActiveEmail ? 'email-p-active' : 'email-p'}>{getTranslation(localStorage.getItem('language'), 'email')}</p>
                                 <input ref={emailInputSignIn} type="email" className="email-input" />
                             </div>
 
                             <div onClick={handleInputActivePassword} className="password-container">
-                                <p className={inputActivePassword ? 'password-p-active' : 'password-p'}>Password:</p>
+                                <p className={inputActivePassword ? 'password-p-active' : 'password-p'}>{getTranslation(localStorage.getItem('language'), 'password')}</p>
                                 <input ref={passwordInputSignIn} type={showPassword ? 'text' : 'password'} className="password-input" />
                                 <img onClick={() => setShowPassword(!showPassword)} src={showPassword ? Show : Hide} alt={showPassword ? 'show password icon' : 'hide password icon'} />
                             </div>
@@ -135,7 +136,7 @@ function Sign() {
                                     signInLoading ? (
                                         <div className="loading"></div>
                                     ) : (
-                                        <p>SIGN IN</p>
+                                        <p>{getTranslation(localStorage.getItem('language'), 'sign-in')}</p>
                                     )
                                 }
                             </button>
@@ -143,17 +144,17 @@ function Sign() {
                     ) : (
                         <div className="sign-up-container">
                             <div onClick={handleInputActiveUserName} className="user-name-container">
-                                <p className={inputActiveUserName ? 'user-name-p-active' : 'user-name-p'}>User Name:</p>
+                                <p className={inputActiveUserName ? 'user-name-p-active' : 'user-name-p'}>{getTranslation(localStorage.getItem('language'), 'user-name')}</p>
                                 <input ref={userNameInput} type="text" className="user-name-input" />
                             </div>
 
                             <div onClick={handleInputActiveEmail} className="email-container">
-                                <p className={inputActiveEmail ? 'email-p-active' : 'email-p'}>Email:</p>
+                                <p className={inputActiveEmail ? 'email-p-active' : 'email-p'}>{getTranslation(localStorage.getItem('language'), 'email')}</p>
                                 <input ref={emailInputSignUp} type="email" className="email-input" />
                             </div>
 
                             <div onClick={handleInputActivePassword} className="password-container">
-                                <p className={inputActivePassword ? 'password-p-active' : 'password-p'}>Password:</p>
+                                <p className={inputActivePassword ? 'password-p-active' : 'password-p'}>{getTranslation(localStorage.getItem('language'), 'password')}</p>
                                 <input ref={passwordInputSignUp} type={showPassword ? 'text' : 'password'} className="password-input" />
                                 <img onClick={() => setShowPassword(!showPassword)} src={showPassword ? Show : Hide} alt={showPassword ? 'show password icon' : 'hide password icon'} />
                             </div>
@@ -163,7 +164,7 @@ function Sign() {
                                     signUpLoading ? (
                                         <div className="loading"></div>
                                     ) : (
-                                        <p>SIGN UP</p>
+                                        <p>{getTranslation(localStorage.getItem('language'), 'sign-up')}</p>
                                     )
                                 }
                             </button>

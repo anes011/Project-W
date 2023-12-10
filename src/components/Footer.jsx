@@ -1,4 +1,5 @@
 import '../styles/footer.css';
+import { getTranslation } from '../translations/translationService';
 
 function Footer() {
     return(
@@ -36,7 +37,7 @@ function Footer() {
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
                             <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/>
                         </svg>
-                        <p>Contact us via email:</p>
+                        <p>{getTranslation(localStorage.getItem('language'), 'contact-us-email')}</p>
                     </div>
                     <p>ccontact655@gmail.com</p>
                 </div>
@@ -44,33 +45,33 @@ function Footer() {
 
             <div className="links-container">
                 <div className="product-section">
-                    <p>Product</p>
-                    <p>Overview</p>
-                    <p>Features</p>
-                    <p>Solutions</p>
-                    <p>Tutorials</p>
-                    <p>Pricing</p>
-                    <p>Releases</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'product')}</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'overview')}</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'features')}</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'solutions')}</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'tutorials')}</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'pricing')}</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'releases')}</p>
                 </div>
 
                 <div className="company-section">
-                    <p>Company</p>
-                    <p>About us</p>
-                    <p>Careers</p>
-                    <p>Press</p>
-                    <p>News</p>
-                    <p>Media kit</p>
-                    <p>Contact</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'company')}</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'about-us')}</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'careers')}</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'press')}</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'news')}</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'media-kit')}</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'contact')}</p>
                 </div>
 
                 <div className="resources-section">
-                    <p>Resources</p>
-                    <p>Blog</p>
-                    <p>Newsletter</p>
-                    <p>Events</p>
-                    <p>Help center</p>
-                    <p>Tutorials</p>
-                    <p>Support</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'resources')}</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'blog')}</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'news')}</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'events')}</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'help-center')}</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'tutorials')}</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'support')}</p>
                 </div>
             </div>
 

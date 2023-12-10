@@ -1,18 +1,25 @@
 .search-page {
     padding: 7rem 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .offer-container {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     color: #000;
     text-decoration: none;
     margin-top: 2rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid rgb(180, 180, 180);
+    max-width: 1200px;
 }
 
 .images-grid {
     width: 50%;
+    min-width: 350px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
@@ -27,6 +34,7 @@
 
 .details {
     width: 50%;
+    min-width: 350px;
     padding: 2rem 4rem;
     display: flex;
     flex-direction: column;

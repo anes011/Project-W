@@ -176,6 +176,8 @@
 
 .password-field {
     width: 30%;
+    min-width: 330px;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     gap: 2rem;

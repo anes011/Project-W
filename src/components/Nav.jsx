@@ -164,9 +164,13 @@ function Nav() {
                 try {
                     const response = await fetch(`http://localhost:4000/addOffer/search?q=${searchInput.current.value}`);
                     const data = await response.json();
-                    localStorage.setItem('search', JSON.stringify(data.result));
-                    redirect('/search');
-                    window.location.reload();
+                    if (data.result.length === 0) {
+                        alert('Results not found, please feel free to try again!');
+                    } else {
+                        localStorage.setItem('search', JSON.stringify(data.result));
+                        redirect('/search');
+                        window.location.reload();
+                    }
                 } catch (err) {
                     console.error(err);
                 }
