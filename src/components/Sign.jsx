@@ -76,7 +76,7 @@ function Sign() {
         const logInApi = async () => {
             if (emailInputSignIn.current && passwordInputSignIn.current) {
                 try {
-                    const response = await fetch('http://localhost:4000/users/compare', {
+                    const response = await fetch('https://project-w.onrender.com/users/compare', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

@@ -14,7 +14,7 @@ function ReservationsTable() {
     useEffect(() => {
         const reservationApi = async () => {
             try {
-                const response = await fetch('http://localhost:4000/reservation');
+                const response = await fetch('https://project-w.onrender.com/reservation');
                 const data = await response.json();
                 setApiData(data.reservations);
             } catch (err) {

@@ -15,7 +15,7 @@ function ReservationDetails() {
         const userByIdApi = async () => {
             if (offer !== null) {
                 try {
-                    const response = await fetch(`http://localhost:4000/users/${JSON.parse(offer).hostID}`);
+                    const response = await fetch(`https://project-w.onrender.com/users/${JSON.parse(offer).hostID}`);
                     const data = await response.json();
                     setHost(data.user);
                 } catch (err) {
@@ -38,7 +38,7 @@ function ReservationDetails() {
             {
                 host !== null && (
                     <div className="profile">
-                        <img src={`http://localhost:4000/${host.profilePhoto}`} alt={host.profilePhoto} className="profile-photo" />
+                        <img src={`https://project-w.onrender.com/${host.profilePhoto}`} alt={host.profilePhoto} className="profile-photo" />
                         <p>{host.userName}</p>
                         <img src={SuccessIcon} alt="" />
                     </div>

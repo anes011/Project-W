@@ -18,7 +18,7 @@ function ReservationPrice() {
             if (offer !== null && user !== null) {
                 const reservationApi = async () => {
                     try {
-                        const response = await fetch('http://localhost:4000/reservation', {
+                        const response = await fetch('https://project-w.onrender.com/reservation', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'

@@ -35,7 +35,7 @@ function Nav() {
     useEffect(() => {
         const acceptedReservationApi = async () => {
             try {
-                const response = await fetch('http://localhost:4000/acceptedReservation');
+                const response = await fetch('https://project-w.onrender.com/acceptedReservation');
                 const data = await response.json();
                 setApiDataAccepted(data.acceptedReservations);
             } catch (err) {
@@ -60,7 +60,7 @@ function Nav() {
     useEffect(() => {
         const reservationApi = async () => {
             try {
-                const response = await fetch('http://localhost:4000/reservation');
+                const response = await fetch('https://project-w.onrender.com/reservation');
                 const data = await response.json();
                 setApiDataRes(data.reservations);
             } catch (err) {
@@ -162,7 +162,7 @@ function Nav() {
         if (e.key === 'Enter') {
             const searchApi = async () => {
                 try {
-                    const response = await fetch(`http://localhost:4000/addOffer/search?q=${searchInput.current.value}`);
+                    const response = await fetch(`https://project-w.onrender.com/addOffer/search?q=${searchInput.current.value}`);
                     const data = await response.json();
                     if (data.result.length === 0) {
                         alert('Results not found, please feel free to try again!');
@@ -211,7 +211,7 @@ function Nav() {
                         {
                             profileInMenu && (
                                 <div onClick={() => localStorage.getItem('userAccount') === null ? redirect('/signing-page') : redirect('/profile-page')} className="profile-section">
-                                    <img src={profilePhoto !== null ? `http://localhost:4000/${profilePhoto}` : 'https://plus.unsplash.com/premium_photo-1664870883044-0d82e3d63d99?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'} alt="" className="profile-photo" />
+                                    <img src={profilePhoto !== null ? `https://project-w.onrender.com/${profilePhoto}` : 'https://plus.unsplash.com/premium_photo-1664870883044-0d82e3d63d99?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'} alt="" className="profile-photo" />
                                     <p>{userName !== null ? userName : 'User'}</p>
                                 </div>
                             )
@@ -335,7 +335,7 @@ function Nav() {
                 </button>
 
                 <div onClick={() => localStorage.getItem('userAccount') === null ? redirect('/signing-page') : redirect('/profile-page')} className="profile-container">
-                    <img src={profilePhoto !== null ? `http://localhost:4000/${profilePhoto}` : 'https://plus.unsplash.com/premium_photo-1664870883044-0d82e3d63d99?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'} alt="" className="profile-photo" />
+                    <img src={profilePhoto !== null ? `https://project-w.onrender.com/${profilePhoto}` : 'https://plus.unsplash.com/premium_photo-1664870883044-0d82e3d63d99?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'} alt="" className="profile-photo" />
                     <div className="profile-p">
                         <p>{getTranslation(localStorage.getItem('language'), 'menuBtn profile-greeting')}</p>
                         <p>{userName !== null ? userName : 'User'}</p>

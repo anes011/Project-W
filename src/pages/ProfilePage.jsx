@@ -37,7 +37,7 @@ function ProfilePage() {
         const compareApi = async () => {
             if (email !== null) {
                 try {
-                    const response = await fetch('http://localhost:4000/users/compare', {
+                    const response = await fetch('https://project-w.onrender.com/users/compare', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -72,7 +72,7 @@ function ProfilePage() {
         if (newPassword !== null && user !== null) {
             const updatePasswordApi = async () => {
                 try {
-                    const response = await fetch(`http://localhost:4000/users/updatePassword/${JSON.parse(user)._id}`, {
+                    const response = await fetch(`https://project-w.onrender.com/users/updatePassword/${JSON.parse(user)._id}`, {
                         method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json'
@@ -100,7 +100,7 @@ function ProfilePage() {
             formData.append('profilePhoto', changeProfilePhoto);
             const changePhotoApi = async () => {
                 try {
-                    const response = await fetch(`http://localhost:4000/users/${JSON.parse(user)._id}`, {
+                    const response = await fetch(`https://project-w.onrender.com/users/${JSON.parse(user)._id}`, {
                         method: 'PATCH',
                         body: formData
                     });
@@ -121,7 +121,7 @@ function ProfilePage() {
         if (user !== null) {
             const deleteAccountApi = async () => {
                 try {
-                    const response = await fetch(`http://localhost:4000/users/${JSON.parse(user)._id}`, {
+                    const response = await fetch(`https://project-w.onrender.com/users/${JSON.parse(user)._id}`, {
                         method: 'Delete'
                     });
                     const data = await response.json();
@@ -168,7 +168,7 @@ function ProfilePage() {
             <div className="profile-details">
                 <div className='profile-photo-name'>
                     <p>{userName !== null ? userName : 'User'}</p>
-                    <img src={profilePhoto !== null ? `http://localhost:4000/${profilePhoto}` : 'https://plus.unsplash.com/premium_photo-1664870883044-0d82e3d63d99?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'} alt="" className="profile-photo" />
+                    <img src={profilePhoto !== null ? `https://project-w.onrender.com/${profilePhoto}` : 'https://plus.unsplash.com/premium_photo-1664870883044-0d82e3d63d99?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'} alt="" className="profile-photo" />
                 </div>
 
                 <div className="left-section">

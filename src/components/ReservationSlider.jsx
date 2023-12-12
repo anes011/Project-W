@@ -52,7 +52,7 @@ function ReservationSlider() {
                 <div ref={sliderContainer} className="slider-container">
                     {
                         images.map((x) => (
-                            <img className='house-image' src={`http://localhost:4000/${x}`} alt={x} />
+                            <img className='house-image' src={`https://project-w.onrender.com/${x}`} alt={x} />
                         ))
                     }
                 </div>

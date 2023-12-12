@@ -23,9 +23,9 @@ function SearchPage() {
                 search !== null && Object.values(JSON.parse(search)).map((x) => (
                     <Link onClick={() => handleTarget(x._id)} to='/reservation' className='offer-container'>
                         <div className="images-grid">
-                            <img className='offer-img' src={`http://localhost:4000/${x.offerImages[0]}`} alt={x.offerImages[0]} />
-                            <img className='offer-img' src={`http://localhost:4000/${x.offerImages[1]}`} alt={x.offerImages[1]} />
-                            <img className='offer-img' src={`http://localhost:4000/${x.offerImages[2]}`} alt={x.offerImages[2]} />
+                            <img className='offer-img' src={`https://project-w.onrender.com/${x.offerImages[0]}`} alt={x.offerImages[0]} />
+                            <img className='offer-img' src={`https://project-w.onrender.com/${x.offerImages[1]}`} alt={x.offerImages[1]} />
+                            <img className='offer-img' src={`https://project-w.onrender.com/${x.offerImages[2]}`} alt={x.offerImages[2]} />
                         </div>
 
                         <div className="details">

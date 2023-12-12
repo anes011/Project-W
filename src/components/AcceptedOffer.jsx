@@ -12,7 +12,7 @@ function AcceptedOffer() {
     useEffect(() => {
         const acceptedReservationApi = async () => {
             try {
-                const response = await fetch('http://localhost:4000/acceptedReservation');
+                const response = await fetch('https://project-w.onrender.com/acceptedReservation');
                 const data = await response.json();
                 setApiData(data.acceptedReservations);
             } catch (err) {
@@ -28,7 +28,7 @@ function AcceptedOffer() {
 
         const notificationApi = async () => {
             try {
-                const response = await fetch(`http://localhost:4000/acceptedReservation/${target._id}`, {
+                const response = await fetch(`https://project-w.onrender.com/acceptedReservation/${target._id}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ function AcceptedOffer() {
 
         const deleteApi = async () => {
             try {
-                const response = await fetch(`http://localhost:4000/acceptedReservation/${target._id}`, {
+                const response = await fetch(`https://project-w.onrender.com/acceptedReservation/${target._id}`, {
                     method: 'DELETE'
                 });
                 const data = await response.json();
@@ -119,7 +119,7 @@ function AcceptedOffer() {
                                                 <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
                                             </svg>
                                         </button>
-                                        <img src={`http://localhost:4000/${x.hostPhoto}`} alt={x.hostPhoto} className="profile-photo" />
+                                        <img src={`https://project-w.onrender.com/${x.hostPhoto}`} alt={x.hostPhoto} className="profile-photo" />
                                         <p>{x.hostName}</p>
                                     </div>
 

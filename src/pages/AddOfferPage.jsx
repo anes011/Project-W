@@ -130,7 +130,7 @@ function AddOfferPage() {
                     formData.append('checkOut', checkOut);
                     const addOfferApi = async () => {
                         try {
-                            const response = await fetch('http://localhost:4000/addOffer', {
+                            const response = await fetch('https://project-w.onrender.com/addOffer', {
                                 method: 'POST',
                                 body: formData
                             });

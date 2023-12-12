@@ -11,7 +11,7 @@ function ReservationsSubmitted() {
     useEffect(() => {
         const reservationApi = async () => {
             try {
-                const response = await fetch('http://localhost:4000/reservation');
+                const response = await fetch('https://project-w.onrender.com/reservation');
                 const data = await response.json();
                 setApiData(data.reservations);
             } catch (err) {
@@ -27,7 +27,7 @@ function ReservationsSubmitted() {
 
         const deleteReservationApi = async () => {
             try {
-                const response = await fetch(`http://localhost:4000/reservation/${target._id}`, {
+                const response = await fetch(`https://project-w.onrender.com/reservation/${target._id}`, {
                     method: 'DELETE'
                 });
                 const data = await response.json();
@@ -39,7 +39,7 @@ function ReservationsSubmitted() {
         if (user !== null) {
             const acceptReservationApi = async () => {
                 try {
-                    const response = await fetch('http://localhost:4000/acceptedReservation', {
+                    const response = await fetch('https://project-w.onrender.com/acceptedReservation', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -70,7 +70,7 @@ function ReservationsSubmitted() {
 
         const deleteReservationApi = async () => {
             try {
-                const response = await fetch(`http://localhost:4000/reservation/${target._id}`, {
+                const response = await fetch(`https://project-w.onrender.com/reservation/${target._id}`, {
                     method: 'DELETE'
                 });
                 const data = await response.json();
@@ -88,7 +88,7 @@ function ReservationsSubmitted() {
 
         const notificationApi = async () => {
             try {
-                const response = await fetch(`http://localhost:4000/reservation/${target._id}`, {
+                const response = await fetch(`https://project-w.onrender.com/reservation/${target._id}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json'
@@ -151,7 +151,7 @@ function ReservationsSubmitted() {
                                                 <button onClick={() => markAsSeen(x._id)} className='notification'></button>
                                             )
                                         }
-                                        <img src={`http://localhost:4000/${x.reservistPhoto}`} alt={x.reservistPhoto} className="profile-photo" />
+                                        <img src={`https://project-w.onrender.com/${x.reservistPhoto}`} alt={x.reservistPhoto} className="profile-photo" />
                                         <p>{x.reservistName}</p>
                                     </div>
 

@@ -35,7 +35,7 @@ function MoreUserInfo() {
 
                     const createUserApi = async () => {
                         try {
-                            const response = await fetch('http://localhost:4000/users', {
+                            const response = await fetch('https://project-w.onrender.com/users', {
                                 method: 'POST',
                                 body: formData
                             });
