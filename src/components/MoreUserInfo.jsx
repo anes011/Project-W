@@ -12,11 +12,14 @@ function MoreUserInfo() {
 
     const [profilePhoto, setProfilePhoto] = useState(null);
     const [registerLoading, setRegisterLoading] = useState(false);
+    const [disableBtn, setDisableBtn] = useState(false);
 
     const phoneNumberInput = useRef(null);
     const locationInput = useRef(null);
 
     const createUser = () => {
+        setDisableBtn(true);
+        
         const phoneNumberRegex = /^\d{10,}$/;
         const locationRegex = /^(?=.*[A-Za-z]).{4,}$/;
 
@@ -41,28 +44,36 @@ function MoreUserInfo() {
                             });
                             const data = await response.json();
                             if (data.Status === 'success') {
-                                localStorage.setItem('userAccount', JSON.stringify(data.user));
                                 setRegisterLoading(true);
+                                localStorage.setItem('userAccount', JSON.stringify(data.user));
                                 
                                 setTimeout(() => {
                                     redirect('/');
+                                    setRegisterLoading(false);
+                                    setDisableBtn(false);
                                     localStorage.setItem('signRoutes', 'false');
                                 }, 2000);
                             } else if (data.Status === 'failure') {
                                 const duplicateUsernameRegex = /\bduplicate\b/i;
                                 duplicateUsernameRegex.test(data.Error) ? alert('please change the username!') : alert('somthing went wrong!');
+                                setDisableBtn(false);
                             }
                         } catch (err) {
                             console.error(err);
+                            setDisableBtn(false);
                         }
                     };
 
                     createUserApi();
+                } else {
+                    alert('somthing went wrong, please try again!');
+                    setDisableBtn(false);
                 }
         } else {
             alert(`if you haven't inserted a photo, please do so! and if you did already, check the other fields!`)
             alert('location must be at least 4 characters long and must include at least one letter!');
             alert('phone number only accepts (Numbers) and they must be at least 10 numbers long!');
+            setDisableBtn(false);
         }
     };
 
@@ -99,7 +110,7 @@ function MoreUserInfo() {
                     <input ref={phoneNumberInput} type="text" placeholder='Enter your phone number...' />
                 </div>
 
-                <button onClick={createUser}>
+                <button onClick={createUser} disabled={disableBtn}>
                     {
                         registerLoading ? (
                             <div className="loading"></div>
