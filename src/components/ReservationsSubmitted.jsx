@@ -1,6 +1,7 @@
 import '../styles/reservationsSubmitted.css';
 import ReserveIcon from '../images&logos/calendar-checkmark-line-icon.svg';
 import { useEffect, useState } from 'react';
+import { getTranslation } from '../translations/translationService';
 
 function ReservationsSubmitted() {
 
@@ -114,12 +115,12 @@ function ReservationsSubmitted() {
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
                     </svg>
-                    <p>Person reserved</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'person-reserved')}</p>
                 </div>
 
                 <div className="reservations">
                     <img src={ReserveIcon} alt="" />
-                    <p>Reservations</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'reservations')}</p>
                 </div>
 
                 <div className="reservation-date">
@@ -127,7 +128,7 @@ function ReservationsSubmitted() {
                         <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
                         <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
                     </svg>
-                    <p>Date</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'date')}</p>
                 </div>
 
                 <div className="decision">
@@ -135,7 +136,7 @@ function ReservationsSubmitted() {
                         <path d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1H5.5z"/>
                         <path d="M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                     </svg>
-                    <p>Decision</p>
+                    <p>{getTranslation(localStorage.getItem('language'), 'decision')}</p>
                 </div>
 
 
