@@ -1,6 +1,7 @@
 .footer {
     border-top: 2px solid #a4a4a4;
     width: 100%;
+    min-width: 250px;
     padding: 3rem 7rem;
     display: flex;
     flex-wrap: wrap;
@@ -16,6 +17,7 @@
 
 .contact-btns {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
 }
 
@@ -73,4 +75,14 @@
 
 .copy-rights p:nth-of-type(1) {
     font-size: 1.5rem;
+}
+
+@media (max-width: 915px) {
+    .links-container {
+        gap: 5rem;
+    }
+
+    .footer {
+        padding: 3rem 3rem;
+    }
 }

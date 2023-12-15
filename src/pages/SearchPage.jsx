@@ -3,6 +3,7 @@ import HouseImg from '../images&logos/The-Balmoral-Executive-View-Room-e16822608
 import StarsIcon from '../images&logos/five_star_rating.svg';
 import '../styles/searchPage.css';
 import Nav from "../components/Nav";
+import { getTranslation } from "../translations/translationService";
 
 function SearchPage() {
 
@@ -33,143 +34,17 @@ function SearchPage() {
                                 <p>{x.title}</p>
                                 <img className='stars' src={StarsIcon} alt="" />
                             </div>
-                            <p className='price'><span>${x.price}</span>/night</p>
+                            <p className='price'><span>${x.price}</span>DA /{getTranslation(localStorage.getItem('language'), 'price')}</p>
                             <div className="features-container">
-                                <p>{`${x.bathrooms} Bathrooms`}</p>
-                                <p>{`${x.beds} Beds`}</p>
-                                <p className='last-feature'>{`${x.bedrooms} Bedrooms`}</p>
+                                <p>{`${x.bathrooms} ${getTranslation(localStorage.getItem('language'), 'addOffer step-5 bathrooms')}`}</p>
+                                <p>{`${x.beds} ${getTranslation(localStorage.getItem('language'), 'addOffer step-5 beds')}`}</p>
+                                <p className='last-feature'>{`${x.bedrooms} ${getTranslation(localStorage.getItem('language'), 'addOffer step-5 bedrooms')}`}</p>
                             </div>
-                            <button>Book now</button>
+                            <button>{getTranslation(localStorage.getItem('language'), 'mainPage offer button')}</button>
                         </div>
                     </Link>
                 ))
             }
-            <Link to='/reservation' className='offer-container'>
-                <div className="images-grid">
-                    <img className='offer-img' src={HouseImg} alt="" />
-                    <img className='offer-img' src={HouseImg} alt="" />
-                    <img className='offer-img' src={HouseImg} alt="" />
-                </div>
-
-                <div className="details">
-                    <div className="title-stars-container">
-                        <p>Lorem ipsum</p>
-                        <img className='stars' src={StarsIcon} alt="" />
-                    </div>
-                    <p className='price'><span>$120</span>/night</p>
-                    <div className="features-container">
-                        <p>1 Bed</p>
-                        <p>Kitchen</p>
-                        <p className='last-feature'>Living room</p>
-                    </div>
-                    <button>Book now</button>
-                </div>
-            </Link>
-            <Link to='/reservation' className='offer-container'>
-                <div className="images-grid">
-                    <img className='offer-img' src={HouseImg} alt="" />
-                    <img className='offer-img' src={HouseImg} alt="" />
-                    <img className='offer-img' src={HouseImg} alt="" />
-                </div>
-
-                <div className="details">
-                    <div className="title-stars-container">
-                        <p>Lorem ipsum</p>
-                        <img className='stars' src={StarsIcon} alt="" />
-                    </div>
-                    <p className='price'><span>$120</span>/night</p>
-                    <div className="features-container">
-                        <p>1 Bed</p>
-                        <p>Kitchen</p>
-                        <p className='last-feature'>Living room</p>
-                    </div>
-                    <button>Book now</button>
-                </div>
-            </Link>
-            <Link to='/reservation' className='offer-container'>
-                <div className="images-grid">
-                    <img className='offer-img' src={HouseImg} alt="" />
-                    <img className='offer-img' src={HouseImg} alt="" />
-                    <img className='offer-img' src={HouseImg} alt="" />
-                </div>
-
-                <div className="details">
-                    <div className="title-stars-container">
-                        <p>Lorem ipsum</p>
-                        <img className='stars' src={StarsIcon} alt="" />
-                    </div>
-                    <p className='price'><span>$120</span>/night</p>
-                    <div className="features-container">
-                        <p>1 Bed</p>
-                        <p>Kitchen</p>
-                        <p className='last-feature'>Living room</p>
-                    </div>
-                    <button>Book now</button>
-                </div>
-            </Link>
-            <Link to='/reservation' className='offer-container'>
-                <div className="images-grid">
-                    <img className='offer-img' src={HouseImg} alt="" />
-                    <img className='offer-img' src={HouseImg} alt="" />
-                    <img className='offer-img' src={HouseImg} alt="" />
-                </div>
-
-                <div className="details">
-                    <div className="title-stars-container">
-                        <p>Lorem ipsum</p>
-                        <img className='stars' src={StarsIcon} alt="" />
-                    </div>
-                    <p className='price'><span>$120</span>/night</p>
-                    <div className="features-container">
-                        <p>1 Bed</p>
-                        <p>Kitchen</p>
-                        <p className='last-feature'>Living room</p>
-                    </div>
-                    <button>Book now</button>
-                </div>
-            </Link>
-            <Link to='/reservation' className='offer-container'>
-                <div className="images-grid">
-                    <img className='offer-img' src={HouseImg} alt="" />
-                    <img className='offer-img' src={HouseImg} alt="" />
-                    <img className='offer-img' src={HouseImg} alt="" />
-                </div>
-
-                <div className="details">
-                    <div className="title-stars-container">
-                        <p>Lorem ipsum</p>
-                        <img className='stars' src={StarsIcon} alt="" />
-                    </div>
-                    <p className='price'><span>$120</span>/night</p>
-                    <div className="features-container">
-                        <p>1 Bed</p>
-                        <p>Kitchen</p>
-                        <p className='last-feature'>Living room</p>
-                    </div>
-                    <button>Book now</button>
-                </div>
-            </Link>
-            <Link to='/reservation' className='offer-container'>
-                <div className="images-grid">
-                    <img className='offer-img' src={HouseImg} alt="" />
-                    <img className='offer-img' src={HouseImg} alt="" />
-                    <img className='offer-img' src={HouseImg} alt="" />
-                </div>
-
-                <div className="details">
-                    <div className="title-stars-container">
-                        <p>Lorem ipsum</p>
-                        <img className='stars' src={StarsIcon} alt="" />
-                    </div>
-                    <p className='price'><span>$120</span>/night</p>
-                    <div className="features-container">
-                        <p>1 Bed</p>
-                        <p>Kitchen</p>
-                        <p className='last-feature'>Living room</p>
-                    </div>
-                    <button>Book now</button>
-                </div>
-            </Link>
         </div>
     )
 };

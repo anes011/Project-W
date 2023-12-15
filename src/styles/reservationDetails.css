@@ -35,7 +35,6 @@
 }
 
 .description {
-    min-width: 300px;
     margin-top: 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid rgb(191, 191, 191);
@@ -107,10 +106,12 @@
 
 .address-container {
     margin-top: 1rem;
+    min-width: 200px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 4rem;
+    justify-content: start;
+    gap: 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid rgb(191, 191, 191);
 }
@@ -121,18 +122,6 @@
 
 .location img {
     height: 70px;
-}
-
-.state {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    padding-top: 25px;
-}
-
-.state svg {
-    transform: scale(2.6);
 }
 
 .more-details {
@@ -192,4 +181,10 @@
     border-radius: 10px;
     background-color: #000;
     color: #fff;
+}
+
+@media (max-width: 821px) {
+    .address-container {
+        justify-content: center;
+    }
 }
