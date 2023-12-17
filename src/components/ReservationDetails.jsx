@@ -38,7 +38,7 @@ function ReservationDetails() {
             {
                 host !== null && (
                     <div className="profile">
-                        <img src={`https://project-w.onrender.com/${host.profilePhoto}`} alt={host.profilePhoto} className="profile-photo" />
+                        <img src={host.profilePhoto} alt={host.profilePhoto} className="profile-photo" />
                         <p>{host.userName}</p>
                         <img src={SuccessIcon} alt="" />
                     </div>
