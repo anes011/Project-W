@@ -92,7 +92,7 @@ function ReservationComments() {
                             return (
                                 <div className="comment-container">
                                     <div className='comment-profile'>
-                                        <img src={`https://project-w.onrender.com/${x.commentWriterPhoto}`} alt={x.commentWriterPhoto} className="profile-photo" />
+                                        <img src={x.commentWriterPhoto} alt={x.commentWriterPhoto} className="profile-photo" />
                                         <p>{x.commentWriterName}</p>
                                         <p>{`${x.date.slice(0, 4)}/${x.date.slice(5, 7)}/${x.date.slice(8, 10)}`}</p>
                                     </div>

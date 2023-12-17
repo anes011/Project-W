@@ -152,7 +152,7 @@ function ReservationsSubmitted() {
                                                 <button onClick={() => markAsSeen(x._id)} className='notification'></button>
                                             )
                                         }
-                                        <img src={`https://project-w.onrender.com/${x.reservistPhoto}`} alt={x.reservistPhoto} className="profile-photo" />
+                                        <img src={x.reservistPhoto} alt={x.reservistPhoto} className="profile-photo" />
                                         <p>{x.reservistName}</p>
                                     </div>
 

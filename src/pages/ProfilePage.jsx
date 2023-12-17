@@ -169,7 +169,7 @@ function ProfilePage() {
             <div className="profile-details">
                 <div className='profile-photo-name'>
                     <p>{userName !== null ? userName : 'User'}</p>
-                    <img src={profilePhoto !== null ? `https://project-w.onrender.com/${profilePhoto}` : 'https://plus.unsplash.com/premium_photo-1664870883044-0d82e3d63d99?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'} alt="" className="profile-photo" />
+                    <img src={profilePhoto !== null ? `${profilePhoto}` : 'https://plus.unsplash.com/premium_photo-1664870883044-0d82e3d63d99?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'} alt={profilePhoto} className="profile-photo" />
                 </div>
 
                 <div className="left-section">

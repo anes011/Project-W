@@ -53,9 +53,9 @@ function MyOffers() {
                         return (
                             <div className="offer">
                                 <Link onClick={() => offerClicked(x._id)} to='/reservation' className="images-container">
-                                    <img src={`https://project-w.onrender.com/${x.offerImages[0]}`} alt={x.offerImages[0]} />
-                                    <img src={`https://project-w.onrender.com/${x.offerImages[1]}`} alt={x.offerImages[1]} />
-                                    <img src={`https://project-w.onrender.com/${x.offerImages[2]}`} alt={x.offerImages[2]} />
+                                    <img src={x.offerImages[0]} alt={x.offerImages[0]} />
+                                    <img src={x.offerImages[1]} alt={x.offerImages[1]} />
+                                    <img src={x.offerImages[2]} alt={x.offerImages[2]} />
                                 </Link>
 
                                 <div className="details-container">

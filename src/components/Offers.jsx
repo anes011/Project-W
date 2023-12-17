@@ -39,7 +39,7 @@ function Offers() {
                         if (x.hostID !== JSON.parse(user)._id) {
                             return (
                                 <Link onClick={() => offerClicked(x._id)} to='/reservation' className='Link'>
-                                    <img className='house-img' src={`https://project-w.onrender.com/${x.offerImages[0]}`} alt={x.offerImages[0]} />
+                                    <img className='house-img' src={x.offerImages[0]} alt={x.offerImages[0]} />
     
                                     <div className="details-container">
                                         <div className="title-stars-container">
@@ -60,7 +60,7 @@ function Offers() {
                     } else {
                         return (
                             <Link onClick={() => offerClicked(x._id)} to='/reservation' className='Link'>
-                                <img className='house-img' src={`https://project-w.onrender.com/${x.offerImages[0]}`} alt={x.offerImages[0]} />
+                                <img className='house-img' src={x.offerImages[0]} alt={x.offerImages[0]} />
 
                                 <div className="details-container">
                                     <div className="title-stars-container">

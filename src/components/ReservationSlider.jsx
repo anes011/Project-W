@@ -1,8 +1,5 @@
 import '../styles/reservationSlider.css';
-import HouseImage from '../images&logos/The-Balmoral-Executive-View-Room-e1682260891619.jpg';
-import VillaImage from '../images&logos/villa-sea-view-21.jpg';
-import { useRef, useEffect, useContext, useState } from 'react';
-import data from '../Context';
+import { useRef, useEffect, useState } from 'react';
 
 function ReservationSlider() {
 
@@ -52,7 +49,7 @@ function ReservationSlider() {
                 <div ref={sliderContainer} className="slider-container">
                     {
                         images.map((x) => (
-                            <img className='house-image' src={`https://project-w.onrender.com/${x}`} alt={x} />
+                            <img className='house-image' src={x} alt={x} />
                         ))
                     }
                 </div>
