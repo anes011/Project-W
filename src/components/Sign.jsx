@@ -73,6 +73,7 @@ function Sign() {
     };
 
     const logIn = () => {
+        setSignInLoading(true);
         const logInApi = async () => {
             if (emailInputSignIn.current && passwordInputSignIn.current) {
                 try {
@@ -88,18 +89,20 @@ function Sign() {
                     });
                     const data = await response.json();
                     if (data.status === 'Success') {
-                        setSignInLoading(true);
                         
                         setTimeout(() => {
                             localStorage.setItem('userAccount', JSON.stringify(data.User));
                             redirect('/');
                             localStorage.setItem('signRoutes', 'false');
+                            setSignInLoading(false);
                         }, 2000);
                     } else {
-                        alert('somthing went wrong, please recheck your log-in credentials!')
+                        alert('somthing went wrong, please recheck your log-in credentials!');
+                        setSignInLoading(false);
                     }
                 } catch (err) {
                     console.error(err);
+                    setSignInLoading(false);
                 }
             }
         };

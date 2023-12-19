@@ -18,6 +18,7 @@ function MoreUserInfo() {
     const locationInput = useRef(null);
 
     const createUser = () => {
+        setRegisterLoading(true);
         const phoneNumberRegex = /^\d{10,}$/;
         const locationRegex = /^(?=.*[A-Za-z]).{4,}$/;
 
@@ -42,7 +43,6 @@ function MoreUserInfo() {
                             });
                             const data = await response.json();
                             if (data.Status === 'success') {
-                                setRegisterLoading(true);
                                 localStorage.setItem('userAccount', JSON.stringify(data.user));
                                 
                                 setTimeout(() => {
@@ -53,20 +53,24 @@ function MoreUserInfo() {
                             } else if (data.Status === 'failure') {
                                 const duplicateUsernameRegex = /\bduplicate\b/i;
                                 duplicateUsernameRegex.test(data.Error) ? alert('please change the username!') : alert('somthing went wrong!');
+                                setRegisterLoading(false);
                             }
                         } catch (err) {
                             console.error(err);
+                            setRegisterLoading(false);
                         }
                     };
 
                     createUserApi();
                 } else {
-                    alert('somthing went wrong, please try again!');
+                    alert('somthing went wrong, please go back to the previous page and try again!');
+                    setRegisterLoading(false);
                 }
         } else {
             alert(`if you haven't inserted a photo, please do so! and if you did already, check the other fields!`)
             alert('location must be at least 4 characters long and must include at least one letter!');
             alert('phone number only accepts (Numbers) and they must be at least 10 numbers long!');
+            setRegisterLoading(false);
         }
     };
 
